@@ -10,10 +10,69 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="home.diabetesapp.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:background="#d21717">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blood Glucose Level"
+        android:id="@+id/BGLbutton"
+        android:layout_marginBottom="153dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/Medicationbutton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Diabetes Manager"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medication"
+        android:id="@+id/Medicationbutton"
+        android:layout_marginBottom="31dp"
+        android:layout_above="@+id/BGLbutton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="33dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercise"
+        android:id="@+id/Exercisebutton"
+        android:layout_marginBottom="42dp"
+        android:layout_above="@+id/Medicationbutton"
+        android:layout_toEndOf="@+id/Dietbutton"
+        android:layout_marginStart="35dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diet"
+        android:id="@+id/Dietbutton"
+        android:layout_above="@+id/Exercisebutton"
+        android:layout_alignStart="@+id/textView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Perscribed Regimen"
+        android:id="@+id/Perscribedbutton"
+        android:layout_alignTop="@+id/BGLbutton"
+        android:layout_alignStart="@+id/Medicationbutton"
+        android:layout_marginTop="45dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Database"
+        android:id="@+id/databasebutton"
+        android:layout_alignBottom="@+id/Exercisebutton"
+        android:layout_toStartOf="@+id/BGLbutton" />
 </RelativeLayout>

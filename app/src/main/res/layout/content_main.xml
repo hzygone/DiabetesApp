@@ -11,16 +11,16 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="home.diabetesapp.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:background="#d21717">
+    android:background="#FFFFFF">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Blood Glucose Level"
         android:id="@+id/BGLbutton"
-        android:layout_marginBottom="153dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/Medicationbutton" />
+        android:layout_below="@+id/Exercisebutton"
+        android:layout_alignStart="@+id/Exercisebutton"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,50 +29,52 @@
         android:text="Diabetes Manager"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Medication"
         android:id="@+id/Medicationbutton"
-        android:layout_marginBottom="31dp"
-        android:layout_above="@+id/BGLbutton"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="33dp" />
+        android:layout_below="@+id/BGLbutton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Exercise"
         android:id="@+id/Exercisebutton"
-        android:layout_marginBottom="42dp"
-        android:layout_above="@+id/Medicationbutton"
-        android:layout_toEndOf="@+id/Dietbutton"
-        android:layout_marginStart="35dp" />
+        android:layout_below="@+id/databasebutton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Diet"
         android:id="@+id/Dietbutton"
-        android:layout_above="@+id/Exercisebutton"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="34dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Perscribed Regimen"
         android:id="@+id/Perscribedbutton"
-        android:layout_alignTop="@+id/BGLbutton"
-        android:layout_alignStart="@+id/Medicationbutton"
-        android:layout_marginTop="45dp" />
+        android:layout_below="@+id/Dietbutton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Database"
         android:id="@+id/databasebutton"
-        android:layout_alignBottom="@+id/Exercisebutton"
-        android:layout_toStartOf="@+id/BGLbutton" />
+        android:layout_below="@+id/Perscribedbutton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

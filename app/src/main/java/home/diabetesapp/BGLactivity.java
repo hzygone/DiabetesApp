@@ -1,11 +1,17 @@
 package home.diabetesapp;
 
+import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.Time;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.content.Context;
 import android.content.Intent;
@@ -18,12 +24,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.util.TimeUtils;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.DataSet;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.w3c.dom.Text;
 
@@ -36,75 +51,86 @@ import java.util.Random;
 
 public class BGLactivity extends AppCompatActivity {
 
-
-    TextView completiontext;
-    //TextView submittedtext;
-    Button submit;
     Button home;
-    String range;
-    String now;
-    int convert;
-    NumberPicker BGLnums;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bglactivity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if(toolbar != null) {
+            toolbar.setTitle("Blood Glucose");
+            toolbar.setBackground(new ColorDrawable(Color.argb(255, 237, 84, 84)));
+        }
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-
-        completiontext = (TextView) findViewById(R.id.completiontext);
-        BGLnums = (NumberPicker) findViewById((R.id.numberPicker));
-        BGLnums.setMaxValue(200);
-        BGLnums.setMinValue(0);
-        //submittedtext = (TextView) findViewById(R.id.BGLeditone);
-        submit = (Button) findViewById(R.id.BGLsubmitbutton);
         home = (Button) findViewById(R.id.BGLhomebutton);
-        completiontext.setText("");
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submission();
-            }
-        });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(BGLactivity.this ,MainActivity.class);
+                Intent i = new Intent(BGLactivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
 
+        //Setup Linechart
+        //DOCUMENTATION: https://github.com/PhilJay/MPAndroidChart/wiki/Getting-Started
+
+        //DummyData
+        ArrayList<Entry> valsComp1 = new ArrayList<Entry>();
+        ArrayList<Entry> valsComp2 = new ArrayList<Entry>();
+
+        for(int i = 0; i < 10; i++){
+            if(i % 2 == 0){
+                valsComp1.add(new Entry((float)i, 0));
+            } else{
+                valsComp2.add(new Entry((float)i, 1));
+            }
+        }
+
+        LineDataSet setComp1 = new LineDataSet(valsComp1, "Level 1");
+        setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
+        LineDataSet setComp2 = new LineDataSet(valsComp2, "Level 2");
+        setComp2.setAxisDependency(YAxis.AxisDependency.LEFT);
+
+        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        dataSets.add(setComp1);
+        dataSets.add(setComp2);
+
+        ArrayList<String> xVals = new ArrayList<String>();
+        xVals.add("1.Q"); xVals.add("2.Q"); xVals.add("3.Q"); xVals.add("4.Q");
+
+        LineData data = new LineData(dataSets);
+        //END DUMMY DATA
+
+        LineChart chart = (LineChart) findViewById(R.id.BGLChart);
+        chart.setBackgroundColor(12);
+        chart.setDescription("BG Level");
+        chart.setData(data);
+        chart.invalidate();
+
+        //Set up BGLList Data
+        //ListView BGLListView = (ListView) findViewById(R.id.BGLList);
+
     }
 
-    public void submission(){
-        //now.setToNow();
-        if(BGLnums.getValue() < 70)
-        {range = "too low";}
-        else if (BGLnums.getValue() <140)
-        {range = "Good";}
-        else
-        {range = "too high";}
-        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-
-// textView is the TextView view that should display it
-        now = (currentDateTimeString);
-
-        completiontext.setText("Thank you your BGL is "+ range + " and the submission time is " + now + "");
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_bglactivity, menu);
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_add_bgldata) {
+            Intent i = new Intent(BGLactivity.this, AddBGLactivity.class);
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

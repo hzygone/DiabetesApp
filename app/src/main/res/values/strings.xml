@@ -3,4 +3,17 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_bglactivity">BGLactivity</string>
     <string name="title_activity_exerciseactivity">Exerciseactivity</string>
+    <string name="plus_char">+</string>
+    <string-array name="dummy_data">
+        <item>100    9:30 AM 05/22/1994</item>
+        <item>104    9:30 AM 05/22/1994</item>
+        <item>106    9:30 AM 05/22/1994</item>
+        <item>96    9:30 AM 05/22/1994</item>
+        <item>100    9:30 AM 05/22/1994</item>
+        <item>100    9:30 AM 05/22/1994</item>
+        <item>109    9:30 AM 05/22/1994</item>
+        <item>140    9:30 AM 05/22/1994</item>
+        <item>100    9:30 AM 05/22/1994</item>
+        <item>89    9:30 AM 05/22/1994</item>
+    </string-array>
 </resources>

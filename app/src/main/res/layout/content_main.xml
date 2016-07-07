@@ -14,67 +14,53 @@
     android:background="#FFFFFF">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Blood Glucose Level"
+        android:layout_width="180dp"
+        android:layout_height="130dp"
+        android:text="Activity"
+        android:id="@+id/ActivityButton"
+        android:backgroundTint="#FFA726"
+        android:textColor="#FFFFFF"
+        />
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="130dp"
+        android:text="Blood Glucose"
         android:id="@+id/BGLbutton"
-        android:layout_below="@+id/Exercisebutton"
-        android:layout_alignStart="@+id/Exercisebutton"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Diabetes Manager"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toEndOf="@+id/ActivityButton"
+        android:backgroundTint="#ED5454"
+        android:textColor="#FFFFFF"
+        />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="130dp"
         android:text="Medication"
-        android:id="@+id/Medicationbutton"
+        android:id="@+id/MedicationButton"
+        android:layout_below="@+id/ActivityButton"
+        android:backgroundTint="#35B7F3"
+        android:textColor="#FFFFFF"
+        />
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="130dp"
+        android:text="Nutrition"
+        android:id="@+id/NutritionButton"
         android:layout_below="@+id/BGLbutton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toEndOf="@+id/MedicationButton"
+        android:backgroundTint="#69BA6D"
+        android:textColor="#FFFFFF"
+        />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Exercise"
-        android:id="@+id/Exercisebutton"
-        android:layout_below="@+id/databasebutton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Diet"
-        android:id="@+id/Dietbutton"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="34dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Perscribed Regimen"
-        android:id="@+id/Perscribedbutton"
-        android:layout_below="@+id/Dietbutton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Database"
-        android:id="@+id/databasebutton"
-        android:layout_below="@+id/Perscribedbutton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_width="360dp"
+        android:layout_height="100dp"
+        android:text="Regimen"
+        android:id="@+id/RegimenButton"
+        android:layout_below="@+id/MedicationButton"
+        android:backgroundTint="#78909C"
+        android:textColor="#FFFFFF"
+        />
 
 </RelativeLayout>

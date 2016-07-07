@@ -36,6 +36,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="home.diabetesapp.MainActivity" />
         </activity>
+        <activity android:name=".AddBGLactivity"></activity>
     </application>
 
 </manifest>

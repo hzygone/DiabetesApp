@@ -27,6 +27,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="home.diabetesapp.MainActivity" />
         </activity>
+        <activity
+            android:name=".Exerciseactivity"
+            android:label="@string/title_activity_exerciseactivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="home.diabetesapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

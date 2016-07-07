@@ -41,6 +41,16 @@ Button hellobutton;
             }
 
         });
+
+
+        Button Exercisebutton = (Button) findViewById(R.id.Exercisebutton);
+        BGLbutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, BGLactivity.class);
+                startActivity(i);
+            }
+
+        });
     }
 
     @Override

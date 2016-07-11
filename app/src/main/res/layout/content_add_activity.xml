@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,45 +7,43 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="home.diabetesapp.AddBGLactivity"
-    tools:showIn="@layout/activity_add_bglactivity">
+    tools:context="home.diabetesapp.AddActivityActivity">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        android:id="@+id/CancelAddDataButton"
-        android:layout_toEndOf="@+id/AddDataButton"
-        android:layout_below="@+id/BGLInt" />
+        android:id="@+id/CancelActivityButton"
+        android:layout_toEndOf="@+id/AddActivityButton"
+        android:layout_below="@+id/CaloriesInt" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:id="@+id/AddDataButton"
-        android:layout_marginLeft="80dp"
-        android:layout_below="@+id/BGLInt"/>
+        android:id="@+id/AddActivityButton"
+        android:layout_marginStart="80dp"
+        android:layout_below="@+id/CaloriesInt"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/BGLInt"
+        android:id="@+id/CaloriesInt"
         android:layout_marginTop="15dp"
-        android:layout_alignEnd="@+id/CancelAddDataButton"
+        android:layout_alignEnd="@+id/CancelActivityButton"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/BGLTime"/>
+        android:layout_below="@+id/ActivityTime"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="mg/dL"
-        android:id="@+id/GlucoseUnits"
-        android:layout_toEndOf="@+id/BGLInt"
-        android:layout_below="@+id/BGLTime"
+        android:text="cals"
+        android:id="@+id/ActivityUnits"
+        android:layout_toEndOf="@+id/CaloriesInt"
+        android:layout_below="@+id/ActivityTime"
         android:paddingTop="25dp"/>
 
     <EditText
@@ -54,7 +51,7 @@
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/BGLDate"
+        android:id="@+id/ActivityDate"
         android:layout_alignParentStart="true"
         android:layout_marginTop="15dp" />
 
@@ -63,8 +60,8 @@
         android:layout_height="wrap_content"
         android:inputType="time"
         android:ems="10"
-        android:id="@+id/BGLTime"
-        android:layout_below="@id/BGLDate"
+        android:id="@+id/ActivityTime"
+        android:layout_below="@id/ActivityDate"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -72,8 +69,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Date"
-        android:id="@+id/DateLabel"
-        android:layout_toEndOf="@id/BGLDate"
+        android:id="@+id/ActivityDateLabel"
+        android:layout_toEndOf="@id/ActivityDate"
         android:paddingTop="25dp"/>
 
     <TextView
@@ -81,9 +78,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Time"
-        android:id="@+id/TimeLabel"
-        android:layout_below="@id/BGLDate"
-        android:layout_toEndOf="@id/BGLTime"
+        android:id="@+id/ActivityTimeLabel"
+        android:layout_below="@id/ActivityDate"
+        android:layout_toEndOf="@id/ActivityTime"
         android:paddingTop="22dp"/>
 
 </RelativeLayout>

@@ -27,16 +27,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="home.diabetesapp.MainActivity" />
         </activity>
+        <activity android:name=".AddBGLactivity" />
         <activity
-            android:name=".Exerciseactivity"
-            android:label="@string/title_activity_exerciseactivity"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="home.diabetesapp.MainActivity" />
-        </activity>
-        <activity android:name=".AddBGLactivity"></activity>
+            android:name=".NutritionActivity"
+            android:label="@string/title_activity_nutrition"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddNutritionActivity" />
+        <activity android:name=".AddActivityActivity" />
+        <activity
+            android:name=".ActivityActivty"
+            android:label="@string/title_activity_activity_activty"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -11,4 +11,38 @@
 
     <include layout="@layout/content_add_nutrition" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Please enter the type of exercise completed: "
+        android:id="@+id/exerciseprompt"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/EeditText"
+        android:layout_below="@+id/exerciseprompt"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="58dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/Esubmitbutton"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/Esubmissiontext"
+        android:layout_below="@+id/Esubmitbutton"
+        android:layout_toStartOf="@+id/Esubmitbutton"
+        android:layout_marginTop="63dp" />
+
 </RelativeLayout>

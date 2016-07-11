@@ -18,4 +18,6 @@
     </string-array>
     <string name="title_activity_nutrition">NutritionActivity</string>
     <string name="title_activity_activity_activty">ActivityActivty</string>
+    <string name="title_activity_medication_avtivity">MedicationAvtivity</string>
+    <string name="title_activity_regimen">RegimenActivity</string>
 </resources>

@@ -22,6 +22,23 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("Diabetes Management");
         setSupportActionBar(toolbar);
 
+        Button MedicationButton = (Button) findViewById(R.id.MedicationButton);
+        MedicationButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MedicationActivity.class);
+                startActivity(i);
+            }
+
+        });
+
+        Button RegimenButton = (Button) findViewById(R.id.RegimenButton);
+        RegimenButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, RegimenActivity.class);
+                startActivity(i);
+            }
+
+        });
         Button BGLbutton = (Button) findViewById(R.id.BGLbutton);
         BGLbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -48,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
 
 
     }

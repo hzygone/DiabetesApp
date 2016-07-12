@@ -86,7 +86,7 @@ public class ActivityActivty extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_add_nutrition) {
+        if (id == R.id.action_add_activity) {
             Intent i = new Intent(ActivityActivty.this, AddActivityActivity.class);
             startActivity(i);
         }

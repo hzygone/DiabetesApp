@@ -24,7 +24,6 @@ import java.util.ArrayList;
 
 public class ActivityActivty extends AppCompatActivity {
 
-    Button home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +34,6 @@ public class ActivityActivty extends AppCompatActivity {
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 255, 180, 65)));
         }
         setSupportActionBar(toolbar);
-
-
-        home = (Button) findViewById(R.id.ActivityHomeButton);
-
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ActivityActivty.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
 
         //Setup Linechart
         //DOCUMENTATION: https://github.com/PhilJay/MPAndroidChart/wiki/Getting-Started

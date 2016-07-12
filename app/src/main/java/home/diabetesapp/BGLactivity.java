@@ -51,8 +51,6 @@ import java.util.Random;
 
 public class BGLactivity extends AppCompatActivity {
 
-    Button home;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,16 +61,6 @@ public class BGLactivity extends AppCompatActivity {
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 237, 84, 84)));
         }
         setSupportActionBar(toolbar);
-
-        home = (Button) findViewById(R.id.BGLhomebutton);
-
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(BGLactivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
 
         //Setup Linechart
         //DOCUMENTATION: https://github.com/PhilJay/MPAndroidChart/wiki/Getting-Started

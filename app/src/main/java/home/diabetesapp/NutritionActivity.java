@@ -22,8 +22,6 @@ import java.util.ArrayList;
 
 public class NutritionActivity extends AppCompatActivity {
 
-    Button home;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +33,6 @@ public class NutritionActivity extends AppCompatActivity {
         }
         setSupportActionBar(toolbar);
 
-        home = (Button) findViewById(R.id.NutritionHomeButton);
-
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(NutritionActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
 
         //Setup Linechart
         //DOCUMENTATION: https://github.com/PhilJay/MPAndroidChart/wiki/Getting-Started

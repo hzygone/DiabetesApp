@@ -12,19 +12,77 @@
     tools:context="home.diabetesapp.BGLactivity"
     tools:showIn="@layout/activity_bglactivity">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:id="@+id/BGLChart"
-        />
+    <!--<com.github.mikephil.charting.charts.LineChart-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="180dp"-->
+        <!--android:id="@+id/BGLChart"-->
+        <!--/>-->
 
-    <ListView
+    <!--<ListView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/BGLList"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_below="@+id/BGLChart"-->
+        <!--android:entries="@array/dummy_data"/>-->
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/BGLList"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/BGLChart"
-        android:entries="@array/dummy_data"/>
+        android:id="@+id/menuBarLayout"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weekly"
+            android:id="@+id/btnweeklyActivity"
+            android:onClick="showWeeklyActivity"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly"
+            android:layout_toRightOf="@+id/btnweeklyActivity"
+            android:id="@+id/btnMonthlyActivity"
+            android:onClick="showMonthlyActivity"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Graph View"
+            android:layout_toRightOf="@id/btnMonthlyActivity"
+            android:id="@+id/btnGraphView"
+            android:onClick="showGraphView"/>
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listFrame">
+        <ListView
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:id="@+id/bglListView"
+            android:scrollbars="vertical"
+            android:layout_below="@+id/menuBarLayout"
+            android:layout_gravity="fill_vertical"
+            android:layout_alignParentTop="true"
+            >
+        </ListView>
+    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Graph View"
+        android:id="@+id/graphTitle"
+        android:layout_below="@id/listFrame"/>
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:title="Graph Title"
+        android:id="@+id/graph"
+        android:layout_below="@id/graphTitle"
+        >
+    </com.jjoe64.graphview.GraphView>
+
 
 
 </RelativeLayout>

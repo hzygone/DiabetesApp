@@ -1,12 +1,7 @@
 package home.diabetesapp;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,16 +12,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import helper.database.BGLDBHelper;
+import helper.domain.BGL;
+
 public class AddBGLactivity extends AppCompatActivity {
 
     public Button cancel;
     public Button add;
+    BGLDBHelper dbHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bglactivity);
-
+        dbHelper = new BGLDBHelper(this);
         cancel = (Button) findViewById(R.id.CancelAddDataButton);
 
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +49,7 @@ public class AddBGLactivity extends AppCompatActivity {
                     EditText date = (EditText) findViewById(R.id.BGLDate);
                     EditText time = (EditText) findViewById(R.id.BGLTime);
                     EditText duration = (EditText) findViewById(R.id.BGLInt);
+                    EditText comment = (EditText) findViewById(R.id.BGLComment);
                     if (date != null && time != null & duration != null) {
 
                         //Date parsing
@@ -66,7 +67,11 @@ public class AddBGLactivity extends AppCompatActivity {
                         int iBGLReading = Integer.parseInt(duration.getText().toString().trim());
 
                         BloodGlucoseReading bgl = new BloodGlucoseReading(inputDate, inputTime, iBGLReading);
+                        String dateAndTime = inputDate +" : " + inputTime;
                         //TODO ADD ACTIVITY TO DATABASE
+
+                        BGL bglInput = new BGL(dateAndTime, Integer.parseInt(duration.getText().toString()),comment.getText().toString());
+                        dbHelper.addBGL(bglInput);
                     }
                 }catch(Exception ex){}
                 finish();

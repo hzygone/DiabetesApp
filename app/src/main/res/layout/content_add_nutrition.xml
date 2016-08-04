@@ -9,7 +9,7 @@
         android:text="Cancel"
         android:id="@+id/CancelNutritionButton"
         android:layout_toEndOf="@+id/AddNutritionButton"
-        android:layout_below="@+id/BGLInt" />
+        android:layout_below="@+id/NutritionNotes" />
 
     <Button
         android:layout_width="wrap_content"
@@ -17,14 +17,14 @@
         android:text="Add"
         android:id="@+id/AddNutritionButton"
         android:layout_marginStart="80dp"
-        android:layout_below="@+id/BGLInt"/>
+        android:layout_below="@+id/NutritionNotes"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="text"
         android:ems="10"
-        android:id="@+id/BGLInt"
+        android:id="@+id/NutritionNotes"
         android:layout_marginTop="15dp"
         android:layout_alignEnd="@+id/CancelNutritionButton"
         android:layout_alignParentStart="true"
@@ -34,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="mg/dL"
+        android:text="Notes"
         android:id="@+id/NutritionUnits"
-        android:layout_toEndOf="@+id/BGLInt"
+        android:layout_toEndOf="@+id/NutritionNotes"
         android:layout_below="@+id/NutritionTime"
         android:paddingTop="25dp"/>
 

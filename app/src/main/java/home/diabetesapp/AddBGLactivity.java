@@ -70,7 +70,7 @@ public class AddBGLactivity extends AppCompatActivity {
                         String dateAndTime = inputDate +" : " + inputTime;
                         //TODO ADD ACTIVITY TO DATABASE
 
-                        BGL bglInput = new BGL(dateAndTime, Integer.parseInt(duration.getText().toString()),comment.getText().toString());
+                        BGL bglInput = new BGL(dateAndTime, Integer.parseInt(duration.getText().toString()), comment.getText().toString());
                         dbHelper.addBGL(bglInput);
                     }
                 }catch(Exception ex){}

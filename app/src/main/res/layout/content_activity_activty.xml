@@ -12,18 +12,33 @@
     tools:context="home.diabetesapp.ActivityActivty"
     tools:showIn="@layout/activity_activity_activty">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:id="@+id/ActivityChart"
-        />
-
-    <ListView
-        android:layout_width="match_parent"
+    <!--<com.github.mikephil.charting.charts.LineChart-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="180dp"-->
+        <!--android:id="@+id/ActivityChart"-->
+        <!--/>-->
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ActivityList"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/ActivityChart"
-        android:entries="@array/dummy_data"/>
+        android:id="@+id/Monthly"
+        android:text="Monthly"
+        android:onClick="onClick"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/graphView"
+        android:text="Grapah view"
+        android:onClick="onClick"
+        android:layout_toRightOf="@+id/Monthly"
+        />
+<LinearLayout
+    android:layout_marginTop="20dp"
+    android:layout_below="@+id/Monthly"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:id="@+id/fragmentContainer"
+    android:orientation="horizontal">
+
+</LinearLayout>
 
 </RelativeLayout>

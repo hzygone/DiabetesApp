@@ -40,10 +40,7 @@ public class BGLDBHelper extends SQLiteOpenHelper {
                 + KEY_COMMENT + " TEXT " + " )";
 
         db.execSQL(sqlStatement);
-
     }
-
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -78,20 +75,18 @@ public class BGLDBHelper extends SQLiteOpenHelper {
 
     public BGL getBGLByTime(String bglTime){
         SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_TIME_STAMP, KEY_BG_READING, KEY_COMMENT},
-//                null, null, null, null, null);
-//       Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_TIME_STAMP, KEY_BG_READING, KEY_COMMENT},
-//               KEY_TIME_STAMP + " =? ", new String[] {bglTime}, null , null,null,null);
+//
         Cursor cursor = db.rawQuery("SELECT * FROM "+ DATABASE_TABLE + " WHERE " + KEY_TIME_STAMP + " = '" + bglTime+  "'", null);
         Log.i("INFO", "After rawQuery executed");
         BGL bgl = null;
         if(cursor != null){
             cursor.moveToFirst();
             bgl =  new BGL(
-                    cursor.getString(0),
-                    cursor.getInt(1),
-                    cursor.getString(2));
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getString(3));
         }
+        cursor.close();
         db.close();
         return bgl;
     }

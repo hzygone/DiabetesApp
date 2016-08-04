@@ -43,10 +43,10 @@ public class BGL {
 
     @Override
     public String toString() {
-        return "BGL{" +
-                "timeStamp='" + timeStamp + '\'' +
-                ", bgReading=" + bgReading +
-                ", comment='" + comment + '\'' +
+        return
+                "time= '" + timeStamp + '\'' +
+                ", bgl= " + bgReading +
+                ", comment= '" + comment + '\'' +
                 '}';
     }
 }

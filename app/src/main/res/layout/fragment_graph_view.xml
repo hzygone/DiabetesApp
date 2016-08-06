@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorFragmentDetail"
+
     tools:context="home.diabetesapp.GraphViewFragment">
 
     <com.jjoe64.graphview.GraphView
          android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:title="BGL Line graph"
         android:id="@+id/bglgraph"
         >

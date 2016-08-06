@@ -14,7 +14,10 @@ public class MedicationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medication_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        if(toolbar != null) {
+            toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
+            setSupportActionBar(toolbar);
+        }
     }
 
     /** Called when the activity is about to become visible. */

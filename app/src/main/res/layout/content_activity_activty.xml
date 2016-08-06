@@ -12,30 +12,38 @@
     tools:context="home.diabetesapp.ActivityActivty"
     tools:showIn="@layout/activity_activity_activty">
 
-    <!--<com.github.mikephil.charting.charts.LineChart-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="180dp"-->
-        <!--android:id="@+id/ActivityChart"-->
-        <!--/>-->
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Monthly"
-        android:text="Monthly"
-        android:onClick="onClick"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/graphView"
-        android:text="Grapah view"
-        android:onClick="onClick"
-        android:layout_toRightOf="@+id/Monthly"
-        />
+        android:id="@+id/menuBarLayout"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weekly"
+            android:id="@+id/btnweeklyActivity"
+            android:onClick="onClick"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly"
+            android:layout_toRightOf="@+id/btnweeklyActivity"
+            android:id="@+id/btnMonthlyActivity"
+            android:onClick="onClick"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Graph View"
+            android:layout_toEndOf="@id/btnMonthlyActivity"
+            android:id="@+id/btnGraphView"
+            android:onClick="onClick"/>
+    </LinearLayout>
 <LinearLayout
     android:layout_marginTop="20dp"
-    android:layout_below="@+id/Monthly"
+    android:layout_below="@+id/menuBarLayout"
     android:layout_width="match_parent"
     android:layout_height="300dp"
+    android:layout_alignParentBottom="true"
     android:id="@+id/fragmentContainer"
     android:orientation="horizontal">
 

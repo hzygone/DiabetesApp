@@ -9,8 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.YAxis;
@@ -32,6 +30,7 @@ public class NutritionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar != null) {
             toolbar.setTitle("Nutrition");
+            toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 124, 194, 131)));
         }
         setSupportActionBar(toolbar);

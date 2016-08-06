@@ -1,5 +1,10 @@
 package home.diabetesapp;
 
+import android.app.FragmentManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,11 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
-
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +25,14 @@ import java.util.List;
 import helper.database.BGLDBHelper;
 import helper.domain.BGL;
 
-public class BGLactivity extends AppCompatActivity {
+public class BGLActivity extends AppCompatActivity {
     ListView listView ;
     private List<BGL> bglList;
     BGLDBHelper dbHelper;
     public String msg;
+
+    Button btnWeeklyActivity, btnMonthlyActivity, btnGraphView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,57 +41,26 @@ public class BGLactivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar != null) {
             toolbar.setTitle("Blood Glucose");
+            toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 237, 84, 84)));
         }
         setSupportActionBar(toolbar);
+
+        btnWeeklyActivity = (Button) findViewById(R.id.btnweeklyActivity);
+        btnMonthlyActivity = (Button) findViewById(R.id.btnMonthlyActivity);
+        btnGraphView =(Button) findViewById(R.id.btnGraphView);
         dbHelper = new BGLDBHelper(this);
         bglList = new ArrayList<BGL>();
-        listView = (ListView)findViewById(R.id.bglListView);
-
-
-        //Setup Linechart
-        //DOCUMENTATION: https://github.com/PhilJay/MPAndroidChart/wiki/Getting-Started
-
-        //DummyData
-//        ArrayList<Entry> valsComp1 = new ArrayList<Entry>();
-//        ArrayList<Entry> valsComp2 = new ArrayList<Entry>();
-//
-//        for(int i = 0; i < 10; i++){
-//            if(i % 2 == 0){
-//                valsComp1.add(new Entry((float)i, 0));
-//            } else{
-//                valsComp2.add(new Entry((float)i, 1));
-//            }
-//        }
-//
-//        LineDataSet setComp1 = new LineDataSet(valsComp1, "Level 1");
-//        setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
-//        LineDataSet setComp2 = new LineDataSet(valsComp2, "Level 2");
-//        setComp2.setAxisDependency(YAxis.AxisDependency.LEFT);
-//
-//        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-//        dataSets.add(setComp1);
-//        dataSets.add(setComp2);
-//
-//        ArrayList<String> xVals = new ArrayList<String>();
-//        xVals.add("1.Q"); xVals.add("2.Q"); xVals.add("3.Q"); xVals.add("4.Q");
-//
-//        LineData data = new LineData(dataSets);
-//        //END DUMMY DATA
-//
-//        LineChart chart = (LineChart) findViewById(R.id.BGLChart);
-//        chart.setBackgroundColor(12);
-//        chart.setDescription("BG Level");
-//        chart.setData(data);
-//        chart.invalidate();
-
-        //Set up BGLList Data
-        //ListView BGLListView = (ListView) findViewById(R.id.BGLList);
+        // Todo - need to implement custom alarm(notification) handler
+      //  setAlarm();
+      //  showNotification();
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+//        menu.add(0, 0, 0, "Quit").setIcon(R.drawable.plus_white);
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_bglactivity, menu);
         return true;
@@ -97,7 +71,7 @@ public class BGLactivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_add_bgldata) {
-            Intent i = new Intent(BGLactivity.this, AddBGLactivity.class);
+            Intent i = new Intent(BGLActivity.this, AddBGLactivity.class);
             startActivity(i);
         }
 
@@ -115,40 +89,36 @@ public class BGLactivity extends AppCompatActivity {
         listView.setAdapter(new ArrayAdapter<BGL>(this, android.R.layout.simple_list_item_1, bglList));
 
     }
+    public void onClick(View view) {
+        FragmentManager fm = getFragmentManager();
 
-    public void showGraphView(View View){
-        GraphView bglLineGraph = (GraphView) findViewById(R.id.graph);
-        bglList = dbHelper.getAllBGL();
-        int len = bglList.size();
-        DataPoint[] bglDataPoint = new DataPoint[len];
-        int counter = 0;
-        for(BGL a : bglList){
 
-            bglDataPoint[counter] = new DataPoint(counter,a.getBgReading());
-            counter++;
+        if (view == btnWeeklyActivity) {
+            android.app.FragmentTransaction ft = fm.beginTransaction();
+            BGListViewFragment bglFragment = new BGListViewFragment();
+            ft.replace(R.id.fragmentContainer, bglFragment);
+            ft.commit();
+
+        } else if (view == btnGraphView) {
+            android.app.FragmentTransaction ft = fm.beginTransaction();
+            GraphViewFragment bglFragment = new GraphViewFragment();
+            ft.replace(R.id.fragmentContainer, bglFragment);
+            ft.commit();
+
+        } else if(view == btnMonthlyActivity){
+
+            //Todo need to populate monthly bgl readings
+            android.app.FragmentTransaction ft = fm.beginTransaction();
+            BGListViewFragment bglFragment = new BGListViewFragment();
+            ft.replace(R.id.fragmentContainer, bglFragment);
+            ft.commit();
+
         }
-
-        LineGraphSeries<DataPoint> line_series = new LineGraphSeries<DataPoint>();
-        line_series.resetData(bglDataPoint);
-        line_series.setDrawDataPoints(true);
-        line_series.setDataPointsRadius(6);
-
-        bglLineGraph.addSeries(line_series);
-
-        // set the bound
-        // set manual X bounds
-
-        bglLineGraph.getViewport().setXAxisBoundsManual(true);
-        bglLineGraph.getViewport().setMinX(1);
-        bglLineGraph.getViewport().setMaxX(31);
-
-        // set manual Y bounds
-        bglLineGraph.getViewport().setYAxisBoundsManual(true);
-        bglLineGraph.getViewport().setMinY(90);
-        bglLineGraph.getViewport().setMaxY(300);
-
-        bglLineGraph.getViewport().setScrollable(true);
+        else{
+            //
+        }
     }
+
 
     /** Called when the activity is about to become visible. */
     @Override
@@ -183,5 +153,24 @@ public class BGLactivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         Log.d(msg, "The onDestroy() event");
+    }
+
+    private void showNotification() {
+        Intent intent = new Intent(this, ActivityActivty.class);
+
+        // Holds the intent in waiting until it’s ready to be used
+        PendingIntent pi = PendingIntent.getActivity(this, 1, intent, 0);
+
+        Notification notification = new Notification.Builder(getApplicationContext())
+                .setContentTitle("BGL reading Remainder").setContentText("BGL Taking time sample notification")
+        .setTicker("Ticker Text").setSmallIcon(R.drawable.plus_white)
+        .setContentIntent(pi).setStyle(new Notification.BigTextStyle()
+                .bigText("Time to take BGL measurement ")).build();
+
+        // Get an instance of the notification manager
+        NotificationManager noteManager = (NotificationManager)
+                getSystemService(Context.NOTIFICATION_SERVICE);
+        // Post to the system bar
+        noteManager.notify(1, notification);
     }
 }

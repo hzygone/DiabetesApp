@@ -9,60 +9,80 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="home.diabetesapp.AddActivityActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:id="@+id/CancelActivityButton"
-        android:layout_toEndOf="@+id/AddActivityButton"
-        android:layout_below="@+id/ActivityDuration" />
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Cancel"-->
+        <!--android:id="@+id/CancelActivityButton"-->
+        <!--android:layout_toEndOf="@+id/AddActivityButton"-->
+        <!--android:layout_below="@+id/ActivityDuration" />-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:id="@+id/AddActivityButton"
-        android:layout_marginStart="80dp"
-        android:layout_below="@+id/ActivityDuration"/>
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Add"-->
+        <!--android:id="@+id/AddActivityButton"-->
+        <!--android:layout_marginStart="80dp"-->
+        <!--android:layout_below="@+id/ActivityDuration"/>-->
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/ActivityDuration"
-        android:layout_marginTop="15dp"
-        android:layout_alignEnd="@+id/CancelActivityButton"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ActivityTime"/>
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="number"-->
+        <!--android:ems="10"-->
+        <!--android:id="@+id/ActivityDuration"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:layout_alignEnd="@+id/CancelActivityButton"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_below="@+id/ActivityTime"/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="duration\n(minutes)"
-        android:id="@+id/duration"
-        android:layout_toEndOf="@+id/ActivityDuration"
-        android:layout_below="@+id/ActivityTime"
-        android:paddingTop="25dp"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="duration\n(minutes)"-->
+        <!--android:id="@+id/duration"-->
+        <!--android:layout_toEndOf="@+id/ActivityDuration"-->
+        <!--android:layout_below="@+id/ActivityTime"-->
+        <!--android:paddingTop="25dp"/>-->
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/ActivityDate"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="date"-->
+        <!--android:ems="10"-->
+        <!--android:id="@+id/ActivityDate"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginTop="15dp" />-->
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/ActivityTime"
-        android:layout_below="@id/ActivityDate"
-        android:layout_alignParentStart="true" />
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="time"-->
+        <!--android:ems="10"-->
+        <!--android:id="@+id/ActivityTime"-->
+        <!--android:layout_below="@id/ActivityDate"-->
+        <!--android:layout_alignParentStart="true" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Date"-->
+        <!--android:id="@+id/ActivityDateLabel"-->
+        <!--android:layout_toEndOf="@id/ActivityDate"-->
+        <!--android:paddingTop="25dp"/>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Start time"-->
+        <!--android:id="@+id/ActivityTimeLabel"-->
+        <!--android:layout_below="@id/ActivityDate"-->
+        <!--android:layout_toEndOf="@id/ActivityTime"-->
+        <!--android:paddingTop="22dp"/>-->
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,8 +90,18 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Date"
         android:id="@+id/ActivityDateLabel"
-        android:layout_toEndOf="@id/ActivityDate"
         android:paddingTop="25dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/ActivityDate"
+        android:layout_toEndOf="@+id/ActivityDateLabel"
+        android:layout_alignLeft="@+id/ActivityDuration"
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,7 +110,57 @@
         android:text="Start time"
         android:id="@+id/ActivityTimeLabel"
         android:layout_below="@id/ActivityDate"
-        android:layout_toEndOf="@id/ActivityTime"
         android:paddingTop="22dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/ActivityTime"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/ActivityDuration"
+        android:layout_below="@id/ActivityDate"
+        android:layout_toEndOf="@+id/ActivityTimeLabel"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="duration\n(minutes)"
+        android:id="@+id/duration"
+        android:layout_below="@+id/ActivityTime"
+        android:paddingTop="25dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/ActivityDuration"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginTop="15dp"
+        android:layout_alignEnd="@+id/CancelActivityButton"
+        android:layout_toEndOf="@+id/duration"
+        android:layout_below="@+id/ActivityTime"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/AddActivityButton"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="80dp"
+        android:layout_below="@+id/ActivityDuration"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Cancel"
+        android:id="@+id/CancelActivityButton"
+        android:layout_toEndOf="@+id/AddActivityButton"
+        android:layout_below="@+id/ActivityDuration" />
 
 </RelativeLayout>

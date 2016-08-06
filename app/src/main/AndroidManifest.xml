@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BGLactivity"
+            android:name=".BGLActivity"
             android:label="@string/title_activity_bglactivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -56,6 +56,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="home.diabetesapp.MainActivity" />
         </activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>

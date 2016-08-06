@@ -12,14 +12,11 @@
     tools:context=".MedicationActivity"
     tools:showIn="@layout/activity_medication_activity">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Use this screen to enter your medication and when you want your reminders."
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="match_parent"
+        android:id="@+id/editViewContainer"
+        >
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,14 +24,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Name of Medication: "
         android:id="@+id/NoM"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="58dp" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editMedication"
+        android:inputType="text"
+        android:ems="10"
         android:layout_alignTop="@+id/NoM"
         android:layout_toEndOf="@+id/NoM" />
 
@@ -54,7 +52,9 @@
         android:ems="10"
         android:id="@+id/editText"
         android:layout_below="@+id/editMedication"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_alignLeft="@+id/editMedication"
+        android:layout_alignRight="@+id/editMedication"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,8 +62,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Days of the Week"
         android:id="@+id/textView3"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="10dp"
+     />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -72,7 +73,7 @@
         android:id="@+id/Mondaycheck"
         android:layout_below="@+id/textView3"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp" />
+         />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -127,8 +128,28 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:id="@+id/MedSubmitButton"
-        android:layout_below="@+id/Sundaycheck"
-        android:layout_alignLeft="@+id/Fridaycheck"
+        android:layout_alignRight="@+id/Saturdaycheck"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/Fridaycheck"
         android:isScrollContainer="false" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/editViewContainer"
+        android:background="@color/colorNote"
+        android:id="@+id/infoContainer"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Note: \nUse this screen to enter your medication and when you want your reminders."
+            android:id="@+id/textView"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -41,6 +42,7 @@ public class GraphViewFragment extends Fragment {
          bglList = new ArrayList<BGL>();
          dbHelper = new BGLDBHelper(this.getActivity());
 
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_graph_view, container, false);
 
@@ -49,6 +51,7 @@ public class GraphViewFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 
     @Override
@@ -64,7 +67,11 @@ public class GraphViewFragment extends Fragment {
         Log.i("INFO", "After graph is instantiated");
         bglList = dbHelper.getAllBGL();
         int len = bglList.size();
-        DataPoint[] bglDataPoint = new DataPoint[len];
+        final DataPoint[] bglDataPoint = new DataPoint[len];
+        if(bglList.isEmpty()){
+            Toast.makeText(this.getActivity(),"No data is available to display", Toast.LENGTH_SHORT).show();
+            return;
+        }
         int counter = 0;
         for(BGL a : bglList){
 
@@ -77,13 +84,15 @@ public class GraphViewFragment extends Fragment {
         line_series.setDrawDataPoints(true);
         line_series.setDataPointsRadius(6);
 
+//        line_series.setThickness(5);
+
         bglLineGraph.addSeries(line_series);
 
         // set the bound
         // set manual X bounds
 
         bglLineGraph.getViewport().setXAxisBoundsManual(true);
-        bglLineGraph.getViewport().setMinX(1);
+        bglLineGraph.getViewport().setMinX(0);
         bglLineGraph.getViewport().setMaxX(31);
 
         // set manual Y bounds

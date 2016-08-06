@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar != null) {
             toolbar.setTitle("Diabetes Management");
+            toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
+
         }
         setSupportActionBar(toolbar);
 
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         if(BGLbutton != null) {
             BGLbutton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent i = new Intent(MainActivity.this, BGLactivity.class);
+                    Intent i = new Intent(MainActivity.this, BGLActivity.class);
                     startActivity(i);
                 }
 
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
 
     /** Called when the activity is about to become visible. */
     @Override
@@ -111,4 +116,37 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(msg, "The onDestroy() event");
     }
+
+    //Called to display the menu action buttons or overflow action buttons
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+
+            case R.id.action_about:
+                Intent intentAbout = new Intent(this, AboutActivity.class);
+                startActivity(intentAbout);
+                return true;
+
+            case R.id.action_help:
+                Intent intentHelp = new Intent(this, AboutActivity.class);
+                startActivity(intentHelp);
+                return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

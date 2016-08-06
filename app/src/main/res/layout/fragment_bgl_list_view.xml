@@ -4,16 +4,21 @@
     android:layout_height="match_parent"
     tools:context=".BGListViewFragment"
     android:id="@+id/fragmentContainer">
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/listTitle"-->
+        <!--android:text="List view"-->
+        <!--/>-->
 
     <ListView
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="0dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/bglListView"
     android:scrollbars="vertical"
-    android:layout_below="@+id/menuBarLayout"
     android:layout_gravity="fill_vertical"
-    android:layout_alignParentTop="true"
+        android:background="@color/colorFragmentDetail"
     >
     </ListView>
 </FrameLayout>

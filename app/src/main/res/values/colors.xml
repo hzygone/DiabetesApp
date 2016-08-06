@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="carnation">#ED5454</color>
+    <color name="colorFragmentDetail">#d1e0e0</color>
+    <color name="lightBlue">#00ff00</color>
+    <color name="activityColorMaster">#05a1a1</color>
+    <color name="colorNote">#ced4cd</color>
 </resources>

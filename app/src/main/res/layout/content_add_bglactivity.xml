@@ -12,40 +12,54 @@
     tools:context="home.diabetesapp.AddBGLactivity"
     tools:showIn="@layout/activity_add_bglactivity">
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:id="@+id/CancelAddDataButton"
-        android:layout_toEndOf="@+id/AddDataButton"
-        android:layout_below="@+id/BGLComment" />
+        android:layout_alignParentStart="true"
+        android:text="Date: "
+        android:id="@+id/DateLabel"
+        android:paddingTop="25dp"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:id="@+id/AddDataButton"
-        android:layout_marginLeft="80dp"
-        android:layout_below="@+id/BGLComment"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="date"
+        android:layout_toEndOf="@+id/DateLabel"
         android:ems="10"
-        android:id="@+id/BGLComment"
+        android:id="@+id/BGLDate"
         android:layout_marginTop="15dp"
-        android:layout_alignEnd="@+id/CancelAddDataButton"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/BGLInt"/>
+        android:layout_alignParentEnd="true"
+         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Comment"
-        android:id="@+id/commentLabel"
-        android:layout_toEndOf="@+id/BGLInt"
-        android:layout_below="@+id/BGLInt"
+        android:layout_alignParentStart="true"
+        android:text="Time: "
+        android:id="@+id/TimeLabel"
+        android:layout_below="@id/DateLabel"
+        android:paddingTop="25dp"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/BGLTime"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/TimeLabel"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/BGLDate"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mg/dL: "
+        android:id="@+id/GlucoseUnits"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/BGLTime"
         android:paddingTop="25dp"/>
 
     <EditText
@@ -55,57 +69,52 @@
         android:ems="10"
         android:id="@+id/BGLInt"
         android:layout_marginTop="15dp"
-        android:layout_alignEnd="@+id/CancelAddDataButton"
-        android:layout_alignParentStart="true"
+        android:layout_toEndOf="@+id/GlucoseUnits"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/BGLTime"/>
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="mg/dL"
-        android:id="@+id/GlucoseUnits"
-        android:layout_toEndOf="@+id/BGLInt"
-        android:layout_below="@+id/BGLTime"
-        android:paddingTop="25dp"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/BGLDate"
+        android:text="Comment: "
+        android:id="@+id/commentLabel"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_toEndOf="@+id/BGLInt"
+        android:layout_below="@+id/BGLInt"
+        android:paddingTop="25dp"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="time"
+        android:inputType="text"
         android:ems="10"
-        android:id="@+id/BGLTime"
-        android:layout_below="@id/BGLDate"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/BGLComment"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/commentLabel"
+        android:layout_alignParentEnd="true"
+        android:layout_alignEnd="@+id/CancelAddDataButton"
+        android:layout_below="@+id/BGLInt"/>
 
-    <TextView
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Date"
-        android:id="@+id/DateLabel"
-        android:layout_toEndOf="@id/BGLDate"
-        android:paddingTop="25dp"/>
+        android:layout_marginTop="20dp"
+        android:text="Add"
+        android:id="@+id/AddDataButton"
+        android:layout_marginLeft="80dp"
+        android:layout_below="@+id/BGLComment"/>
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Time"
-        android:id="@+id/TimeLabel"
-        android:layout_below="@id/BGLDate"
-        android:layout_toEndOf="@id/BGLTime"
-        android:paddingTop="22dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Cancel"
+        android:id="@+id/CancelAddDataButton"
+        android:layout_toEndOf="@+id/AddDataButton"
+        android:layout_below="@+id/BGLComment" />
 
-        />
 
 </RelativeLayout>

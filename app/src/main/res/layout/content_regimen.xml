@@ -92,5 +92,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnStartReminder"
-        android:text="Starting a reminder will let remind you when to act 10 minutes for the specified regimens \n It will automatically take the events from the regiment lists  "/>
+        android:text="Starting the  reminder will set the alarm to notify you when to act to one of the listed regimens.\n It will automatically take the events time from the regimen  lists  "/>
 </RelativeLayout>

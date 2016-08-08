@@ -4,15 +4,25 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import helper.util.RegimenAlarmReceiver;
 
 public class RegimenActivity extends AppCompatActivity {
 
+    RegimenAlarmReceiver alarm = new RegimenAlarmReceiver();
+
     String msg;
+
+    Button btnStartReminder ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regimen);
+
+        btnStartReminder = (Button) findViewById(R.id.btnStartReminder);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar !=null) {
             toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
@@ -53,6 +63,16 @@ public class RegimenActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         Log.d(msg, "The onDestroy() event");
+    }
+
+    public void startReminder(View view){
+        alarm.setAlarm(this);
+
+    }
+
+    public void cancelReminder(View view){
+        alarm.cancelAlarm(this);
+
     }
 
 }

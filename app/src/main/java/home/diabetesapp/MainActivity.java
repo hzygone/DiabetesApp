@@ -9,8 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import helper.util.RegimenAlarmReceiver;
 
 public class MainActivity extends AppCompatActivity {
+    RegimenAlarmReceiver alarm = new RegimenAlarmReceiver();
 
     public String msg;
     @Override
@@ -143,8 +147,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentHelp = new Intent(this, AboutActivity.class);
                 startActivity(intentHelp);
                 return true;
+            // When the user clicks START ALARM, set the alarm.
+            case R.id.start_action:
+                Toast.makeText(this,"Set Alram: ", Toast.LENGTH_SHORT).show();
+                alarm.setAlarm(this);
+                return true;
+            // When the user clicks CANCEL ALARM, cancel the alarm.
+            case R.id.cancel_action:
+                alarm.cancelAlarm(this);
+                return true;
         }
-
 
         return super.onOptionsItemSelected(item);
     }

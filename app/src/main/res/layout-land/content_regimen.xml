@@ -20,7 +20,9 @@
         android:id="@+id/textView4"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +33,7 @@
         android:layout_marginTop="15dp"
         android:layout_below="@+id/textView4"
         android:layout_alignParentStart="true"
-         />
+        android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -51,7 +53,8 @@
         android:id="@+id/textView6"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/DietEditRegimen"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -66,11 +69,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Exercise Data: "
+        android:text="Exercise Date: "
         android:layout_marginTop="15dp"
         android:id="@+id/textView7"
         android:layout_below="@+id/MedicationEditRegimen"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -81,4 +85,19 @@
         android:layout_toRightOf="@+id/textView7"
         android:layout_alignParentRight="true"
          />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnStartReminder"
+        android:text="Start Reminder"
+        android:layout_below="@+id/ExerciseEditRegimen"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="startReminder"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStartReminder"
+        android:text="Starting a reminder will let remind you when to act 10 minutes for the specified regimens. \n It will automatically take the events from the regiment lists  "/>
 </RelativeLayout>

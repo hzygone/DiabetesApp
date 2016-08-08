@@ -12,129 +12,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="home.diabetesapp.AddBGLactivity"
     tools:showIn="@layout/activity_add_bglactivity">
-    <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/btnContainer"-->
-        <!--android:layout_toRightOf="@id/mainContainer"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--&gt;-->
-        <!--<Button-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content" />-->
-    <!--</LinearLayout>-->
-
-<!--<RelativeLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:background="@color/colorPrimary"-->
-    <!--android:id="@+id/mainContainer"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-        <!--android:text="Date: "-->
-        <!--android:id="@+id/DateLabel"-->
-        <!--android:paddingTop="25dp"/>-->
-
-    <!--<EditText-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:inputType="date"-->
-        <!--android:layout_toEndOf="@+id/DateLabel"-->
-        <!--android:ems="10"-->
-        <!--android:id="@+id/BGLDate"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:layout_alignParentEnd="true"-->
-         <!--/>-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-        <!--android:text="Time: "-->
-        <!--android:id="@+id/TimeLabel"-->
-        <!--android:layout_below="@id/DateLabel"-->
-        <!--android:paddingTop="25dp"-->
-        <!--/>-->
-
-    <!--<EditText-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:inputType="time"-->
-        <!--android:ems="10"-->
-        <!--android:id="@+id/BGLTime"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:layout_toEndOf="@id/TimeLabel"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_below="@id/BGLDate"-->
-        <!--/>-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-        <!--android:text="mg/dL: "-->
-        <!--android:id="@+id/GlucoseUnits"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_below="@+id/BGLTime"-->
-        <!--android:paddingTop="25dp"/>-->
-
-    <!--<EditText-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:inputType="number"-->
-        <!--android:ems="10"-->
-        <!--android:id="@+id/BGLInt"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:layout_toEndOf="@+id/GlucoseUnits"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_below="@+id/BGLTime"/>-->
-
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-        <!--android:text="Comment: "-->
-        <!--android:id="@+id/commentLabel"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_toEndOf="@+id/BGLInt"-->
-        <!--android:layout_below="@+id/BGLInt"-->
-        <!--android:paddingTop="25dp"/>-->
-
-    <!--<EditText-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:inputType="text"-->
-        <!--android:ems="10"-->
-        <!--android:id="@+id/BGLComment"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:layout_toEndOf="@+id/commentLabel"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_alignEnd="@+id/CancelAddDataButton"-->
-        <!--android:layout_below="@+id/BGLInt"/>-->
-
-
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Add"-->
-        <!--android:id="@+id/AddDataButton"-->
-        <!--android:layout_marginLeft="80dp"-->
-        <!--android:layout_below="@+id/BGLComment"/>-->
-
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Cancel"-->
-        <!--android:id="@+id/CancelAddDataButton"-->
-        <!--android:layout_toEndOf="@+id/AddDataButton"-->
-        <!--android:layout_below="@+id/BGLComment" />-->
-
-<!--</RelativeLayout>-->
 
     <LinearLayout
         android:orientation="vertical"
@@ -179,7 +56,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Date: "
             android:id="@+id/DateLabel"
-            android:paddingTop="25dp"/>
+            android:paddingTop="25dp"
+            android:layout_alignParentLeft="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -190,7 +68,8 @@
             android:id="@+id/BGLDate"
             android:layout_marginTop="15dp"
             android:layout_alignParentEnd="true"
-            />
+            android:layout_toRightOf="@+id/DateLabel"
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -201,7 +80,7 @@
             android:id="@+id/TimeLabel"
             android:layout_below="@id/DateLabel"
             android:paddingTop="25dp"
-            />
+            android:layout_alignParentLeft="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -213,7 +92,8 @@
             android:layout_toEndOf="@id/TimeLabel"
             android:layout_alignParentEnd="true"
             android:layout_below="@id/BGLDate"
-            />
+            android:layout_toRightOf="@id/TimeLabel"
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -223,7 +103,8 @@
             android:id="@+id/GlucoseUnits"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/BGLTime"
-            android:paddingTop="25dp"/>
+            android:paddingTop="25dp"
+            android:layout_alignParentLeft="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -234,7 +115,9 @@
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/GlucoseUnits"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/BGLTime"/>
+            android:layout_below="@+id/BGLTime"
+            android:layout_toRightOf="@+id/GlucoseUnits"
+            android:layout_alignParentRight="true" />
 
 
         <TextView
@@ -246,7 +129,9 @@
             android:layout_alignParentStart="true"
             android:layout_toEndOf="@+id/BGLInt"
             android:layout_below="@+id/BGLInt"
-            android:paddingTop="25dp"/>
+            android:paddingTop="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_toRightOf="@+id/BGLInt" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -257,6 +142,8 @@
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/commentLabel"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/BGLInt"/>
+            android:layout_below="@+id/BGLInt"
+            android:layout_toRightOf="@+id/commentLabel"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 </RelativeLayout>

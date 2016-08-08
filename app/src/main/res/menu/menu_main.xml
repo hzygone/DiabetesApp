@@ -17,5 +17,11 @@
         android:orderInCategory="103"
         android:title="@string/action_logout"
         app:showAsAction="never" />
+    <item android:id="@+id/start_action"
+        app:showAsAction="never"
+        android:title="Start Reminder" />
+    <item android:id="@+id/cancel_action"
+        app:showAsAction="never"
+        android:title="Cancel Reminder" />
 
 </menu>

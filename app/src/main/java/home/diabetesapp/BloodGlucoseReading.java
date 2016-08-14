@@ -8,8 +8,6 @@ import java.util.Date;
  */
 public class BloodGlucoseReading {
 
-    //TODO HAVE GETTERS AND SETTERS INTERACT WITH DATABASE?
-
     private Date date;
     private Time time;
     private int BloodGlucoseLevel;

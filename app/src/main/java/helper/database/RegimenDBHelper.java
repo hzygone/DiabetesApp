@@ -18,7 +18,7 @@ public class RegimenDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_TABLE = "BGL";
 
     private static final  String  KEY_ID = "_id";
-    private  static  final String KEY_TIME_STAMP ="_timeStamp";
+    private  static  final String KEY_TIME_STAMP ="timeStamp";
     private static final String KEY_BG_READING = "bgReading";
     private static final String KEY_COMMENT = "comment";
 

@@ -21,7 +21,7 @@ public class BGLDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_TABLE = "BGL";
 
     private static final  String  KEY_ID = "_id";
-    private  static  final String KEY_TIME_STAMP ="_timeStamp";
+    private  static  final String KEY_TIME_STAMP ="timeStamp";
     private static final String KEY_BGL_READING = "bgReading";
     private static final String KEY_COMMENT = "comment";
 
@@ -65,10 +65,10 @@ public class BGLDBHelper extends SQLiteOpenHelper {
             System.out.println("This is it" + e.getCause());
         }
         if(rowInserted != -1)
-            Log.i("Error", "Row inserted successfully");
+            Log.i("INFO", "Row inserted successfully");
 
         else {
-            Log.e("Error", "Row is not inserted");
+            Log.e("ERROR", "Row is not inserted");
         }
            db.close();
     }

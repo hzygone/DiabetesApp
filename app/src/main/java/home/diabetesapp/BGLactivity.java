@@ -156,7 +156,7 @@ public class BGLActivity extends AppCompatActivity {
     }
 
     private void showNotification() {
-        Intent intent = new Intent(this, ActivityActivty.class);
+        Intent intent = new Intent(this, ExerciseActivty.class);
 
         // Holds the intent in waiting until it’s ready to be used
         PendingIntent pi = PendingIntent.getActivity(this, 1, intent, 0);

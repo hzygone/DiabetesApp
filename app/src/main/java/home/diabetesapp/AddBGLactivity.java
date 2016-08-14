@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -43,15 +44,20 @@ public class AddBGLactivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                System.out.println("Adding BGL reading...");
+                Log.i("INFO", "Adding BGL reading...");
 
                 try {
-                    System.out.println("Adding Activity...");
+                    Log.i("INFO", "Inside Try block , Adding BGL reading...");
                     EditText date = (EditText) findViewById(R.id.BGLDate);
                     EditText time = (EditText) findViewById(R.id.BGLTime);
                     EditText duration = (EditText) findViewById(R.id.BGLInt);
                     EditText comment = (EditText) findViewById(R.id.BGLComment);
-                    if (date != null && time != null & duration != null) {
+                    Log.i("INFO", "Date is: "+ date.getText().toString() + ", Time is :  "+
+                            time.getText().toString()+ ", duration is: "+ duration.getText().toString());
+
+                    if ((!(date.getText().toString().isEmpty())
+                            && !(time.getText().toString().isEmpty())
+                            && !(duration.getText().toString().isEmpty()))) {
 
                         //Date parsing
                         String sDate = date.getText().toString().trim();
@@ -69,13 +75,20 @@ public class AddBGLactivity extends AppCompatActivity {
 
                         BloodGlucoseReading bgl = new BloodGlucoseReading(inputDate, inputTime, iBGLReading);
                         String dateAndTime = inputDate +" : " + inputTime;
-                        //TODO ADD ACTIVITY TO DATABASE
 
                         BGL bglInput = new BGL(dateAndTime, Integer.parseInt(duration.getText().toString()), comment.getText().toString());
                         dbHelper.addBGL(bglInput);
+                        finish();
+
                     }
-                }catch(Exception ex){}
-                finish();
+                    else{
+                        Toast.makeText(getApplicationContext(), "Date or Time or mg/dl field can not be empty!",Toast.LENGTH_LONG).show();
+                    }
+
+                }
+                catch(Exception ex){
+
+                }
             }
         });
     }

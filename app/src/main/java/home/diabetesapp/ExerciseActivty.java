@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class ActivityActivty extends AppCompatActivity {
+public class ExerciseActivty extends AppCompatActivity {
     Button monthly, graphView;
 
     public String msg;
@@ -46,7 +46,7 @@ public class ActivityActivty extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_add_activity) {
-            Intent i = new Intent(ActivityActivty.this, AddActivityActivity.class);
+            Intent i = new Intent(ExerciseActivty.this, AddExerciseActivity.class);
             startActivity(i);
         }
 

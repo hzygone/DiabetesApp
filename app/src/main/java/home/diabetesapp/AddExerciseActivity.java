@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddActivityActivity extends AppCompatActivity {
+public class AddExerciseActivity extends AppCompatActivity {
 
     Button cancel;
     Button add;

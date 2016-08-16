@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,137 +12,126 @@
     tools:context="home.diabetesapp.AddBGLactivity"
     tools:showIn="@layout/activity_add_bglactivity">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/three"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/one"
+    <Button
+        android:id="@+id/btnDatePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingTop="5dp"
+        android:text="SELECT DATE: " />
 
-        >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_marginTop="90dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:text="Add"
-            android:id="@+id/AddDataButton"
-           />
+    <EditText
+        android:id="@+id/BGLDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/btnDatePicker"
+        android:layout_toRightOf="@+id/btnDatePicker"
+        android:ems="10"
+        android:inputType="date" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Cancel"
-            android:layout_marginTop="10dp"
-            android:id="@+id/CancelAddDataButton"
-            android:layout_below="@+id/AddDataButton" />
+    <Button
+        android:id="@+id/btnTimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/btnDatePicker"
+        android:paddingTop="5dp"
+        android:text="SELECT TIME: " />
 
-    </LinearLayout>
+    <EditText
+        android:id="@+id/BGLTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/BGLDate"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/btnTimePicker"
+        android:layout_toRightOf="@id/btnTimePicker"
+        android:ems="10"
+        android:inputType="time" />
 
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:id="@+id/three"
-        android:layout_width="450dp"
+    <TextView
+        android:id="@+id/GlucoseUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/BGLTime"
+        android:paddingTop="5dp"
+        android:text="mg/dL: "
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
-        android:layout_height="match_parent"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Date: "
-            android:id="@+id/DateLabel"
-            android:paddingTop="25dp"
-            android:layout_alignParentLeft="true" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:layout_toEndOf="@+id/DateLabel"
-            android:ems="10"
-            android:id="@+id/BGLDate"
-            android:layout_marginTop="15dp"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/DateLabel"
-            android:layout_alignParentRight="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Time: "
-            android:id="@+id/TimeLabel"
-            android:layout_below="@id/DateLabel"
-            android:paddingTop="25dp"
-            android:layout_alignParentLeft="true" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="time"
-            android:ems="10"
-            android:id="@+id/BGLTime"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@id/TimeLabel"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@id/BGLDate"
-            android:layout_toRightOf="@id/TimeLabel"
-            android:layout_alignParentRight="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="mg/dL: "
-            android:id="@+id/GlucoseUnits"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/BGLTime"
-            android:paddingTop="25dp"
-            android:layout_alignParentLeft="true" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/BGLInt"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/GlucoseUnits"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/BGLTime"
-            android:layout_toRightOf="@+id/GlucoseUnits"
-            android:layout_alignParentRight="true" />
+    <EditText
+        android:id="@+id/BGLInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/BGLTime"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/BGLTime"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/GlucoseUnits"
+        android:layout_toRightOf="@+id/GlucoseUnits"
+        android:ems="10"
+        android:inputType="number" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Comment: "
-            android:id="@+id/commentLabel"
-            android:layout_alignParentStart="true"
-            android:layout_toEndOf="@+id/BGLInt"
-            android:layout_below="@+id/BGLInt"
-            android:paddingTop="25dp"
-            android:layout_alignParentLeft="true"
-            android:layout_toRightOf="@+id/BGLInt" />
+    <TextView
+        android:id="@+id/commentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/BGLInt"
+        android:layout_toEndOf="@+id/BGLInt"
+        android:layout_toRightOf="@+id/BGLInt"
+        android:paddingTop="5dp"
+        android:text="Comment: "
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:ems="10"
-            android:id="@+id/BGLComment"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/commentLabel"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/BGLInt"
-            android:layout_toRightOf="@+id/commentLabel"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
+    <EditText
+        android:id="@+id/BGLComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/CancelAddDataButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/CancelAddDataButton"
+        android:layout_below="@+id/BGLInt"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/commentLabel"
+        android:layout_toRightOf="@+id/commentLabel"
+        android:ems="10"
+        android:inputType="text" />
+
+
+    <Button
+        android:id="@+id/AddDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BGLComment"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="5dp"
+        android:text="Add" />
+
+    <Button
+        android:id="@+id/CancelAddDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BGLComment"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/AddDataButton"
+        android:layout_toRightOf="@+id/AddDataButton"
+        android:text="Cancel" />
+
+
 </RelativeLayout>

@@ -11,148 +11,131 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="home.diabetesapp.AddBGLactivity">
 
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentStart="true"-->
-    <!--android:text="Date: "-->
-    <!--android:id="@+id/DateLabel"-->
-    <!--android:paddingTop="25dp"-->
-    <!--android:layout_alignParentLeft="true" />-->
     <Button
+        android:id="@+id/btnDatePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="SELECT DATE: "
-        android:id="@+id/btnDatePicker"
         android:paddingTop="25dp"
-        android:layout_alignParentLeft="true" />
+        android:text="SELECT DATE: " />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:layout_toEndOf="@+id/btnDatePicker"
-        android:ems="10"
         android:id="@+id/BGLDate"
-        android:layout_marginTop="15dp"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/btnDatePicker"
-        android:layout_alignParentRight="true" />
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentStart="true"-->
-    <!--android:text="Time: "-->
-    <!--android:id="@+id/TimeLabel"-->
-    <!--android:layout_below="@id/DateLabel"-->
-    <!--android:paddingTop="25dp"-->
-    <!--android:layout_alignParentLeft="true" />-->
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:text="SELECT TIME: "
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/btnDatePicker"
+        android:layout_toRightOf="@+id/btnDatePicker"
+        android:ems="10"
+        android:inputType="date" />
+
+    <Button
         android:id="@+id/btnTimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@id/btnDatePicker"
         android:paddingTop="25dp"
-        android:layout_alignParentLeft="true" />
+        android:text="SELECT TIME: " />
 
     <EditText
+        android:id="@+id/BGLTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/BGLTime"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/BGLDate"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@id/btnTimePicker"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/BGLDate"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/btnTimePicker" />
+        android:layout_toRightOf="@id/btnTimePicker"
+        android:ems="10"
+        android:inputType="time" />
 
     <TextView
+        android:id="@+id/GlucoseUnits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mg/dL: "
-        android:id="@+id/GlucoseUnits"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/BGLTime"
         android:paddingTop="25dp"
-        android:layout_alignParentLeft="true" />
+        android:text="mg/dL: " />
 
     <EditText
+        android:id="@+id/BGLInt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/BGLInt"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/BGLTime"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/GlucoseUnits"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/BGLTime"
         android:layout_toRightOf="@+id/GlucoseUnits"
-        android:layout_alignParentRight="true" />
+        android:ems="10"
+        android:inputType="number" />
 
 
     <TextView
+        android:id="@+id/commentLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comment: "
-        android:id="@+id/commentLabel"
-        android:layout_alignParentStart="true"
-        android:layout_toEndOf="@+id/BGLInt"
-        android:layout_below="@+id/BGLInt"
-        android:paddingTop="25dp"
         android:layout_alignParentLeft="true"
-        android:layout_toRightOf="@+id/BGLInt" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/BGLInt"
+        android:layout_toEndOf="@+id/BGLInt"
+        android:layout_toRightOf="@+id/BGLInt"
+        android:paddingTop="25dp"
+        android:text="Comment: " />
 
     <EditText
+        android:id="@+id/BGLComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:ems="10"
-        android:id="@+id/BGLComment"
+        android:layout_alignEnd="@+id/CancelAddDataButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/CancelAddDataButton"
+        android:layout_below="@+id/BGLInt"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/commentLabel"
-        android:layout_alignParentEnd="true"
-        android:layout_alignEnd="@+id/CancelAddDataButton"
-        android:layout_below="@+id/BGLInt"
         android:layout_toRightOf="@+id/commentLabel"
-        android:layout_alignParentRight="true"
-        android:layout_alignRight="@+id/CancelAddDataButton" />
+        android:ems="10"
+        android:inputType="text" />
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="UPDATE"
         android:id="@+id/btnUpdate"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/BGLComment" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="DELETE"
-        android:id="@+id/btnDelete"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/btnUpdate"
-        android:layout_below="@+id/BGLComment" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="CANCEL"
-        android:id="@+id/btnCancel"
-        android:layout_toEndOf="@+id/btnDelete"
         android:layout_below="@+id/BGLComment"
-        android:layout_toRightOf="@+id/btnDelete" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="UPDATE" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BGLComment"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/btnUpdate"
+        android:text="DELETE" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BGLComment"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/btnDelete"
+        android:layout_toRightOf="@+id/btnDelete"
+        android:text="CANCEL" />
 
 
 </RelativeLayout>

@@ -9,8 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="home.diabetesapp.AddBGLactivity"
-    tools:showIn="@layout/activity_add_bglactivity">
+    tools:context="home.diabetesapp.AddBGLactivity">
 
     <Button
         android:layout_width="wrap_content"
@@ -18,7 +17,7 @@
         android:layout_alignParentStart="true"
         android:text="SELECT DATE: "
         android:id="@+id/btnDatePicker"
-        android:paddingTop="25dp"
+        android:paddingTop="5dp"
         android:layout_alignParentLeft="true" />
 
     <EditText
@@ -28,7 +27,7 @@
         android:layout_toEndOf="@+id/btnDatePicker"
         android:ems="10"
         android:id="@+id/BGLDate"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/btnDatePicker"
         android:layout_alignParentRight="true" />
@@ -40,7 +39,7 @@
         android:text="SELECT TIME: "
         android:id="@+id/btnTimePicker"
         android:layout_below="@id/btnDatePicker"
-        android:paddingTop="25dp"
+        android:paddingTop="5dp"
         android:layout_alignParentLeft="true" />
 
     <EditText
@@ -49,7 +48,7 @@
         android:inputType="time"
         android:ems="10"
         android:id="@+id/BGLTime"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/btnTimePicker"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/BGLDate"
@@ -63,9 +62,7 @@
         android:id="@+id/GlucoseUnits"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/BGLTime"
-        android:paddingTop="25dp"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:paddingTop="5dp"
         android:layout_alignParentLeft="true" />
 
     <EditText
@@ -74,11 +71,10 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/BGLInt"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/GlucoseUnits"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/BGLTime"
-        android:layout_alignLeft="@+id/BGLTime"
         android:layout_toRightOf="@+id/GlucoseUnits"
         android:layout_alignParentRight="true" />
 
@@ -91,9 +87,7 @@
         android:layout_alignParentStart="true"
         android:layout_toEndOf="@+id/BGLInt"
         android:layout_below="@+id/BGLInt"
-        android:paddingTop="25dp"
-        android:textStyle="bold"
-        android:textSize="25sp"
+        android:paddingTop="5dp"
         android:layout_alignParentLeft="true"
         android:layout_toRightOf="@+id/BGLInt" />
 
@@ -103,7 +97,7 @@
         android:inputType="text"
         android:ems="10"
         android:id="@+id/BGLComment"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/commentLabel"
         android:layout_alignParentEnd="true"
         android:layout_alignEnd="@+id/CancelAddDataButton"
@@ -116,22 +110,32 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Add"
-        android:id="@+id/AddDataButton"
-        android:layout_marginLeft="80dp"
-        android:layout_below="@+id/BGLComment"/>
+        android:layout_marginTop="5dp"
+        android:text="UPDATE"
+        android:id="@+id/btnUpdate"
+        android:layout_marginLeft="100dp"
+        android:layout_below="@+id/BGLComment" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
+        android:text="DELETE"
+        android:id="@+id/btnDelete"
         android:layout_marginLeft="20dp"
-        android:text="Cancel"
-        android:id="@+id/CancelAddDataButton"
-        android:layout_toEndOf="@+id/AddDataButton"
+        android:layout_toRightOf="@+id/btnUpdate"
+        android:layout_below="@+id/BGLComment" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:text="CANCEL"
+        android:id="@+id/btnCancel"
+        android:layout_toEndOf="@+id/btnDelete"
         android:layout_below="@+id/BGLComment"
-        android:layout_toRightOf="@+id/AddDataButton" />
+        android:layout_toRightOf="@+id/btnDelete" />
 
 
 </RelativeLayout>

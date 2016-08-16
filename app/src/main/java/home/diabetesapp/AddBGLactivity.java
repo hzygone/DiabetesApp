@@ -73,29 +73,11 @@ public class AddBGLactivity extends AppCompatActivity implements View.OnClickLis
                             && !(textTime.getText().toString().isEmpty())
                             && !(textDuration.getText().toString().isEmpty()))) {
 
-//                        //Date parsing
-//                        String sDate = textDate.getText().toString().trim();
-//                        DateFormat df = new SimpleDateFormat("MM/dd/yy", Locale.ENGLISH);
-//                        Date inputDate = df.parse(sDate);
-//
-//                        //Time Parsing
-//                        String sTime = textTime.getText().toString().trim();
-//                        df = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
-//                        Date dTime = df.parse(sTime);
-//                        Time inputTime = new Time(dTime.getTime());
-
                         //Duration parsing
                         int iBGLReading = Integer.parseInt(textDuration.getText().toString().trim());
 
-//                        BloodGlucoseReading bgl = new BloodGlucoseReading(inputDate, inputTime, iBGLReading);
-//                        String dateAndTime = inputDate +" : " + inputTime;
-
                         BGL bglInput = new BGL(0, textTime.getText().toString(), textDate.getText().toString(), Integer.parseInt(textDuration.getText().toString()), textComment.getText().toString());
 
-//                        BGL bglInput = new BGL(inputTime.toString(),inputDate.toString(), Integer.parseInt(textDuration.getText().toString()), textComment.getText().toString());
-
-
-//                        BGL bglInput = new BGL(dateAndTime, Integer.parseInt(textDuration.getText().toString()), textComment.getText().toString());
                         dbHelper.addBGL(bglInput);
                         finish();
 

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import home.diabetesapp.AddBGLactivity;
 import home.diabetesapp.BGLActivity;
 import home.diabetesapp.R;
 /**
@@ -15,13 +16,6 @@ import home.diabetesapp.R;
  * Sample code from https://developer.android.com/reference/android/app/
  * */
 
-/**
- * This {@code IntentService} does the app's actual work.
- * {@code RegimenAlarmReceiver} (a {@code WakefulBroadcastReceiver}) holds a
- * partial wake lock for this service while the service does its work. When the
- * service is finished, it calls {@code completeWakefulIntent()} to release the
- * wake lock.
- */
 public class RegimenReminderService extends IntentService {
     public RegimenReminderService() {
         super("RegimenReminderService");
@@ -52,7 +46,7 @@ public class RegimenReminderService extends IntentService {
     private void sendNotification(String msg) {
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent openBGLActivity = new Intent(getBaseContext(), BGLActivity.class);
+        Intent openBGLActivity = new Intent(getBaseContext(), AddBGLactivity.class);
         openBGLActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 

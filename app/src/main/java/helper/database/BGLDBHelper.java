@@ -20,11 +20,11 @@ public class BGLDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "DiabetesApp";
     private static final String DATABASE_TABLE = "BGL";
 
-    private static final  String  KEY_ID = "_id";
-    private  static  final String KEY_TIME_STAMP ="timeStamp";
+    private static final String KEY_ID = "_id";
+    private static final String KEY_TIME_STAMP = "timeStamp";
+    private static final String KEY_DATE_STAMP = "dateStamp";
     private static final String KEY_BGL_READING = "bgReading";
     private static final String KEY_COMMENT = "comment";
-
 
 
     public BGLDBHelper(Context context) {
@@ -35,8 +35,9 @@ public class BGLDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlStatement = "CREATE TABLE " + DATABASE_TABLE + " ("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + KEY_TIME_STAMP + " TEXT , "
-                + KEY_BGL_READING + "  INTEGER, "
+                + KEY_TIME_STAMP + " TEXT NOT NULL, "
+                + KEY_DATE_STAMP + " TEXT NOT NULL, "
+                + KEY_BGL_READING + "  INTEGER NOT NULL, "
                 + KEY_COMMENT + " TEXT " + " )";
 
         db.execSQL(sqlStatement);
@@ -48,55 +49,88 @@ public class BGLDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public  void addBGL(BGL bgl){
+    public void addBGL(BGL bgl) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(KEY_TIME_STAMP, bgl.getTimeStamp());
+        cv.put(KEY_DATE_STAMP, bgl.getDateStamp());
         cv.put(KEY_BGL_READING, bgl.getBgReading());
         cv.put(KEY_COMMENT, bgl.getComment());
         long rowInserted = 0;
 
         try {
             rowInserted = db.insert(DATABASE_TABLE, null, cv);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.e("Error", e.toString());
             System.out.println("This is it" + e.getCause());
         }
-        if(rowInserted != -1)
+        if (rowInserted != -1)
             Log.i("INFO", "Row inserted successfully");
 
         else {
             Log.e("ERROR", "Row is not inserted");
         }
-           db.close();
+        db.close();
     }
 
-    public BGL getBGLByTime(String bglTime){
+    public BGL getBGLByTime(String bglTime) {
         SQLiteDatabase db = this.getReadableDatabase();
-//
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ DATABASE_TABLE + " WHERE " + KEY_TIME_STAMP + " = '" + bglTime+  "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_TIME_STAMP + " = '" + bglTime + "'", null);
         Log.i("INFO", "After rawQuery executed");
         BGL bgl = null;
-        if(cursor != null){
+        if (cursor != null) {
             cursor.moveToFirst();
-            bgl =  new BGL(
+            bgl = new BGL(
+                    cursor.getInt(0),
                     cursor.getString(1),
-                    cursor.getInt(2),
-                    cursor.getString(3));
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getString(4));
+
         }
         cursor.close();
         db.close();
         return bgl;
     }
 
-    public List<BGL> getAllBGL(){
+    public BGL getBGLByDate(String bglDate) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_DATE_STAMP + " = '" + bglDate + "'", null);
+        Log.i("INFO", "After rawQuery executed");
+        BGL bgl = null;
+        if (cursor != null) {
+            cursor.moveToFirst();
+            bgl = new BGL(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getString(4));
+        }
+        cursor.close();
+        db.close();
+        return bgl;
+    }
+
+    public Cursor getAllBGLCursor() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = new String[]{KEY_ID, KEY_TIME_STAMP, KEY_DATE_STAMP, KEY_BGL_READING, KEY_COMMENT};
+        Cursor cursor = db.query(DATABASE_TABLE, columns, null, null, null, null, null);
+        cursor.close();
+        db.close();
+        return cursor;
+
+    }
+
+    public List<BGL> getAllBGL() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<BGL> bglList = new ArrayList<BGL>();
-        Cursor cursor = db.query(DATABASE_TABLE,null,null,null,null,null,null);
+        String[] columns = new String[]{KEY_ID, KEY_TIME_STAMP, KEY_DATE_STAMP, KEY_BGL_READING, KEY_COMMENT};
+        Cursor cursor = db.query(DATABASE_TABLE, columns, null, null, null, null, null);
         cursor.moveToFirst();
-        while(!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             BGL bgl = cursorToBGL(cursor);
             bglList.add(bgl);
             cursor.moveToNext();
@@ -108,12 +142,57 @@ public class BGLDBHelper extends SQLiteOpenHelper {
 
         return bglList;
     }
-    private BGL cursorToBGL(Cursor cursor) {
-        BGL  bgl =  new BGL(
-                cursor.getString(1),
-                cursor.getInt(2),
-                cursor.getString(3));
-        return bgl;
+
+
+    //from and to  arguments should be formatted as YYYY-MM-DD
+    public List<BGL> getBGLBetweenDates(String fromDate, String toDate) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<BGL> bglList = new ArrayList<BGL>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_DATE_STAMP + " BETWEEN '" + fromDate + " ' AND '" + toDate + "'", null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            BGL bgl = cursorToBGL(cursor);
+            bglList.add(bgl);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        db.close();
+
+
+        return bglList;
     }
 
+    public int updateBGLByID(int _id, BGL bgl) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_TIME_STAMP, bgl.getTimeStamp());
+        contentValues.put(KEY_DATE_STAMP, bgl.getDateStamp());
+        contentValues.put(KEY_BGL_READING, bgl.getBgReading());
+        contentValues.put(KEY_COMMENT, bgl.getComment());
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int i = db.update(DATABASE_TABLE, contentValues, KEY_ID + "=" + _id, null);
+        db.close();
+        return i;
+    }
+
+    public void deleteByID(int _id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(DATABASE_TABLE, KEY_ID + " = " + _id, null);
+        db.close();
+
+
+    }
+
+    private BGL cursorToBGL(Cursor cursor) {
+        BGL bgl = new BGL(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getInt(3),
+                cursor.getString(4));
+        return bgl;
+    }
 }

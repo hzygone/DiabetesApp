@@ -25,7 +25,7 @@ import helper.domain.BGL;
  * A simple {@link Fragment} subclass.
  */
 public class GraphViewFragment extends Fragment {
-    ListView listView ;
+    ListView listView;
     private List<BGL> bglList;
     BGLDBHelper dbHelper;
     GraphView bglLineGraph;
@@ -39,8 +39,8 @@ public class GraphViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         bglList = new ArrayList<BGL>();
-         dbHelper = new BGLDBHelper(this.getActivity());
+        bglList = new ArrayList<BGL>();
+        dbHelper = new BGLDBHelper(this.getActivity());
 
 
         // Inflate the layout for this fragment
@@ -48,6 +48,7 @@ public class GraphViewFragment extends Fragment {
 
 
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -55,27 +56,27 @@ public class GraphViewFragment extends Fragment {
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         showGraphView();
 
     }
 
-    public void showGraphView(){
+    public void showGraphView() {
         bglLineGraph = (GraphView) getView().findViewById(R.id.bglgraph);
         bglLineGraph.setTitle("BGL Graph");
         Log.i("INFO", "After graph is instantiated");
         bglList = dbHelper.getAllBGL();
         int len = bglList.size();
         final DataPoint[] bglDataPoint = new DataPoint[len];
-        if(bglList.isEmpty()){
-            Toast.makeText(this.getActivity(),"No data is available to display", Toast.LENGTH_SHORT).show();
+        if (bglList.isEmpty()) {
+            Toast.makeText(this.getActivity(), "No data is available to display", Toast.LENGTH_SHORT).show();
             return;
         }
         int counter = 0;
-        for(BGL a : bglList){
+        for (BGL a : bglList) {
 
-            bglDataPoint[counter] = new DataPoint(counter,a.getBgReading());
+            bglDataPoint[counter] = new DataPoint(counter, a.getBgReading());
             counter++;
         }
 
@@ -92,12 +93,12 @@ public class GraphViewFragment extends Fragment {
         // set manual X bounds
 
         bglLineGraph.getViewport().setXAxisBoundsManual(true);
-        bglLineGraph.getViewport().setMinX(0);
-        bglLineGraph.getViewport().setMaxX(31);
+        bglLineGraph.getViewport().setMinX(1);
+        bglLineGraph.getViewport().setMaxX(90);
 
         // set manual Y bounds
         bglLineGraph.getViewport().setYAxisBoundsManual(true);
-        bglLineGraph.getViewport().setMinY(90);
+        bglLineGraph.getViewport().setMinY(10);
         bglLineGraph.getViewport().setMaxY(300);
 
         bglLineGraph.getViewport().setScrollable(true);

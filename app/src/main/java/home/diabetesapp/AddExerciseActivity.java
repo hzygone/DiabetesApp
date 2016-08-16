@@ -23,6 +23,7 @@ public class AddExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        setTitle("Add Exercise Activity");
 
         cancel = (Button) findViewById(R.id.CancelActivityButton);
 
@@ -36,7 +37,7 @@ public class AddExerciseActivity extends AppCompatActivity {
 
         add = (Button) findViewById(R.id.AddActivityButton);
 
-        add.setOnClickListener(new View.OnClickListener(){
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -63,7 +64,7 @@ public class AddExerciseActivity extends AppCompatActivity {
                         Activity act = new Activity(inputDate, inputTime, iDuration);
                         //TODO ADD ACTIVITY TO DATABASE
                     }
-                }catch(Exception ex){
+                } catch (Exception ex) {
                     System.out.println("Oops...");
                 }
 
@@ -72,35 +73,45 @@ public class AddExerciseActivity extends AppCompatActivity {
         });
     }
 
-    /** Called when the activity is about to become visible. */
+    /**
+     * Called when the activity is about to become visible.
+     */
     @Override
     protected void onStart() {
         super.onStart();
         Log.d(msg, "The onStart() event");
     }
 
-    /** Called when the activity has become visible. */
+    /**
+     * Called when the activity has become visible.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(msg, "The onResume() event");
     }
 
-    /** Called when another activity is taking focus. */
+    /**
+     * Called when another activity is taking focus.
+     */
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(msg, "The onPause() event");
     }
 
-    /** Called when the activity is no longer visible. */
+    /**
+     * Called when the activity is no longer visible.
+     */
     @Override
     protected void onStop() {
         super.onStop();
         Log.d(msg, "The onStop() event");
     }
 
-    /** Called just before the activity is destroyed. */
+    /**
+     * Called just before the activity is destroyed.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();

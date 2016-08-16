@@ -20,12 +20,11 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "DiabetesApp";
     private static final String DATABASE_TABLE = "ACTIVITY";
 
-    private static final  String  KEY_ID = "_id";     // primary key of the Activity table
-    private  static  final String KEY_TIME_STAMP ="timeStamp";  //can be entered manually
+    private static final String KEY_ID = "_id";     // primary key of the Activity table
+    private static final String KEY_TIME_STAMP = "timeStamp";  //can be entered manually
     private static final String KEY_ACTIVITY_NAME = "activityName"; // type of name of the exercise
     private static final String KEY_DURATION = "duration";   // activity duration in minutes
     private static final String KEY_COMMENT = "comment";     // notes about the activity
-
 
 
     public ExerciseDBHelper(Context context) {
@@ -37,7 +36,7 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
         String sqlStatement = "CREATE TABLE " + DATABASE_TABLE + " ("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + KEY_TIME_STAMP + " TEXT DATETIME DEFAULT CURRENT_TIMESTAMP , "
-                + KEY_ACTIVITY_NAME+ "  TEXT, "
+                + KEY_ACTIVITY_NAME + "  TEXT, "
                 + KEY_DURATION + " INTEGER, "
                 + KEY_COMMENT + " TEXT " + " )";
 
@@ -46,33 +45,31 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
     }
 
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(" DROP TABLE IF EXISTS " + DATABASE_TABLE);
         onCreate(db);
     }
 
-    public  void insertActivity(Exercise activity){
+    public void insertActivity(Exercise activity) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(KEY_TIME_STAMP, activity.getTimeStamp());
         cv.put(KEY_ACTIVITY_NAME, activity.getActivityName());
         cv.put(KEY_DURATION, activity.getDuration());
-        cv.put(KEY_COMMENT,activity.getComment());
-        Log.i("INFO", activity.getComment()+ "Before raw inserted");
+        cv.put(KEY_COMMENT, activity.getComment());
+        Log.i("INFO", activity.getComment() + "Before raw inserted");
 
         long rowInserted = 0;
 
         try {
             rowInserted = db.insert(DATABASE_TABLE, null, cv);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.e("Error", e.toString());
             System.out.println("This is it" + e.getCause());
         }
-        if(rowInserted != -1)
+        if (rowInserted != -1)
             Log.i("Error", "Row inserted successfully");
 
         else {
@@ -81,12 +78,12 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<Exercise> getAllActivity(){
+    public List<Exercise> getAllActivity() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(DATABASE_TABLE,null, null, null, null, null,null);
+        Cursor cursor = db.query(DATABASE_TABLE, null, null, null, null, null, null);
         List<Exercise> allActivities = new ArrayList<Exercise>();
         cursor.moveToFirst();
-        while(cursor.isAfterLast()){
+        while (cursor.isAfterLast()) {
             Exercise exercise = cursorToExercise(cursor);
             allActivities.add(exercise);
             Log.d("DEBUG", "After add an exercise to the list");
@@ -100,8 +97,8 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
 
     }
 
-    public Exercise cursorToExercise(Cursor cursor){
-       Exercise  activity =  new Exercise(
+    public Exercise cursorToExercise(Cursor cursor) {
+        Exercise activity = new Exercise(
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getInt(3),

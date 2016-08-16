@@ -10,45 +10,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ExerciseActivty"
-    tools:showIn="@layout/activity_activity_activty">
+    tools:showIn="@layout/activity_exercise_activty">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@color/activityColorMaster"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/menuBarLayout"
-        android:layout_marginLeft="0dp"
         >
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Weekly"
-            android:gravity="center"
             android:id="@+id/btnweeklyActivity"
             android:onClick="onClick"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Monthly"
-            android:layout_below="@+id/btnweeklyActivity"
+            android:layout_toRightOf="@+id/btnweeklyActivity"
             android:id="@+id/btnMonthlyActivity"
             android:onClick="onClick"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Graph View"
-            android:layout_below="@+id/btnMonthlyActivity"
+            android:layout_toEndOf="@id/btnMonthlyActivity"
             android:id="@+id/btnGraphView"
-            android:onClick="onClick"/>
-    </RelativeLayout>
-    <FrameLayout
+            android:onClick="onClick"
+            android:layout_toRightOf="@id/btnMonthlyActivity" />
+    </LinearLayout>
+<LinearLayout
+    android:layout_marginTop="20dp"
+    android:layout_below="@+id/menuBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_alignParentBottom="true"
+    android:id="@+id/fragmentContainer"
+    android:orientation="horizontal">
 
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/menuBarLayout"
-        android:layout_height="match_parent"
-        android:id="@+id/fragmentContainer"
-        android:orientation="vertical">
-
-    </FrameLayout>
+</LinearLayout>
 
 </RelativeLayout>

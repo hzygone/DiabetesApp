@@ -4,21 +4,42 @@ package helper.domain;
  * Created by owner on 7/31/16.
  */
 public class BGL {
+    private int id;
     private String timeStamp;
+    private String dateStamp;
     private int bgReading;
     private String comment;
 
     public BGL() {
     }
 
-    public BGL(String timeStamp, int bgReading, String comment) {
+
+    public BGL(int id, String timeStamp, String dateStamp, int bgReading, String comment) {
+        this.id = id;
         this.timeStamp = timeStamp;
+        this.dateStamp = dateStamp;
         this.bgReading = bgReading;
         this.comment = comment;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTimeStamp() {
         return timeStamp;
+    }
+
+    public String getDateStamp() {
+        return dateStamp;
+    }
+
+    public void setDateStamp(String dateStamp) {
+        this.dateStamp = dateStamp;
     }
 
     public void setTimeStamp(String timeStamp) {
@@ -44,9 +65,11 @@ public class BGL {
     @Override
     public String toString() {
         return
-                "time= '" + timeStamp + '\'' +
-                ", bgl= " + bgReading +
-                ", comment= '" + comment + '\'' +
-                '}';
+                "id=" + id +
+                        ", timeStamp=" + timeStamp +
+                        ", dateStamp=" + dateStamp +
+                        ", bgReading=" + bgReading +
+                        ", comment=" + comment
+                ;
     }
 }

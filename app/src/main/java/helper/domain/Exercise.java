@@ -4,10 +4,10 @@ package helper.domain;
  * Created by owner on 7/31/16.
  */
 public class Exercise {
-    private  String timeStamp;
+    private String timeStamp;
     private String activityName;
     private int duration;  // in minutes
-    private String comment ;
+    private String comment;
 
     public Exercise() {
     }

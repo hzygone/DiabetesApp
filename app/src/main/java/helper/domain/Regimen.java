@@ -12,6 +12,7 @@ public class Regimen {
     public Regimen() {
 
     }
+
     public Regimen(String name, String type, String comment) {
         this.name = name;
         this.type = type;

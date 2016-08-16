@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="home.diabetesapp">
-    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -60,17 +61,20 @@
                 android:value="home.diabetesapp.MainActivity" />
         </activity>
         <activity android:name=".AboutActivity" />
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".HelpActivity" />
 
-        <receiver android:name="helper.util.RegimenAlarmReceiver"></receiver>
-
-        <receiver android:name="helper.util.RegimenAlarmBootReceiver"
+        <receiver android:name="helper.util.RegimenAlarmReceiver" />
+        <receiver
+            android:name="helper.util.RegimenAlarmBootReceiver"
             android:enabled="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
         <service android:name="helper.util.RegimenReminderService" />
+
+        <activity android:name=".ModifyBGLActivity"></activity>
     </application>
 
 </manifest>

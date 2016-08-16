@@ -6,21 +6,20 @@ package helper.domain;
 public class Medication {
     private String medicationName;
     private String timeToTake;
-    private int    doseage;   // interms of miligram or oz;
+    private int doseage;   // interms of miligram or oz;
     private int frequency;  //per day
     private String comment;
 
     public Medication() {
     }
 
-    public Medication(String medicationName,String timeToTake,  int doseage, int frequency, String comment) {
+    public Medication(String medicationName, String timeToTake, int doseage, int frequency, String comment) {
         this.medicationName = medicationName;
         this.timeToTake = timeToTake;
         this.doseage = doseage;
         this.frequency = frequency;
         this.comment = comment;
     }
-
 
 
     public String getMedicationName() {

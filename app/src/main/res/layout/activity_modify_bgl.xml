@@ -9,8 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="home.diabetesapp.AddBGLactivity"
-    tools:showIn="@layout/activity_add_bglactivity">
+    tools:context="home.diabetesapp.AddBGLactivity">
 
     <!--<TextView-->
     <!--android:layout_width="wrap_content"-->
@@ -129,21 +128,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Add"
-        android:id="@+id/AddDataButton"
-        android:layout_marginLeft="80dp"
-        android:layout_below="@+id/BGLComment"/>
+        android:text="UPDATE"
+        android:id="@+id/btnUpdate"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/BGLComment" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="DELETE"
+        android:id="@+id/btnDelete"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/btnUpdate"
+        android:layout_below="@+id/BGLComment" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:text="Cancel"
-        android:id="@+id/CancelAddDataButton"
-        android:layout_toEndOf="@+id/AddDataButton"
+        android:text="CANCEL"
+        android:id="@+id/btnCancel"
+        android:layout_toEndOf="@+id/btnDelete"
         android:layout_below="@+id/BGLComment"
-        android:layout_toRightOf="@+id/AddDataButton" />
+        android:layout_toRightOf="@+id/btnDelete" />
 
 
 </RelativeLayout>

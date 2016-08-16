@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -26,10 +25,11 @@ import helper.database.BGLDBHelper;
 import helper.domain.BGL;
 
 public class BGLActivity extends AppCompatActivity {
-    ListView listView ;
+    ListView listView;
     private List<BGL> bglList;
     BGLDBHelper dbHelper;
     public String msg;
+    private String m_Text = "";
 
     Button btnWeeklyActivity, btnMonthlyActivity, btnGraphView;
 
@@ -39,7 +39,7 @@ public class BGLActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bglactivity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if(toolbar != null) {
+        if (toolbar != null) {
             toolbar.setTitle("Blood Glucose");
             toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 237, 84, 84)));
@@ -48,12 +48,12 @@ public class BGLActivity extends AppCompatActivity {
 
         btnWeeklyActivity = (Button) findViewById(R.id.btnweeklyActivity);
         btnMonthlyActivity = (Button) findViewById(R.id.btnMonthlyActivity);
-        btnGraphView =(Button) findViewById(R.id.btnGraphView);
+        btnGraphView = (Button) findViewById(R.id.btnGraphView);
         dbHelper = new BGLDBHelper(this);
         bglList = new ArrayList<BGL>();
         // Todo - need to implement custom alarm(notification) handler
-      //  setAlarm();
-      //  showNotification();
+        //  setAlarm();
+        //  showNotification();
 
     }
 
@@ -78,17 +78,17 @@ public class BGLActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void showWeeklyActivity(View view) {
-        bglList = dbHelper.getAllBGL();
-        listView.setAdapter(new ArrayAdapter<BGL>(this, android.R.layout.simple_list_item_1, bglList));
-    }
-
-    public void showMonthlyActivity(View view) {
-
-        bglList = dbHelper.getAllBGL();
-        listView.setAdapter(new ArrayAdapter<BGL>(this, android.R.layout.simple_list_item_1, bglList));
-
-    }
+    //    public void showWeeklyActivity(View view) {
+//        bglList = dbHelper.getAllBGL();
+//        listView.setAdapter(new ArrayAdapter<BGL>(this, android.R.layout.simple_list_item_1, bglList));
+//    }
+//
+//    public void showMonthlyActivity(View view) {
+//
+//        bglList = dbHelper.getAllBGL();
+//        listView.setAdapter(new ArrayAdapter<BGL>(this, android.R.layout.simple_list_item_1, bglList));
+//
+//    }
     public void onClick(View view) {
         FragmentManager fm = getFragmentManager();
 
@@ -105,7 +105,7 @@ public class BGLActivity extends AppCompatActivity {
             ft.replace(R.id.fragmentContainer, bglFragment);
             ft.commit();
 
-        } else if(view == btnMonthlyActivity){
+        } else if (view == btnMonthlyActivity) {
 
             //Todo need to populate monthly bgl readings
             android.app.FragmentTransaction ft = fm.beginTransaction();
@@ -113,42 +113,51 @@ public class BGLActivity extends AppCompatActivity {
             ft.replace(R.id.fragmentContainer, bglFragment);
             ft.commit();
 
-        }
-        else{
+        } else {
             //
         }
     }
 
 
-    /** Called when the activity is about to become visible. */
+    /**
+     * Called when the activity is about to become visible.
+     */
     @Override
     protected void onStart() {
         super.onStart();
         Log.d(msg, "The onStart() event");
     }
 
-    /** Called when the activity has become visible. */
+    /**
+     * Called when the activity has become visible.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(msg, "The onResume() event");
     }
 
-    /** Called when another activity is taking focus. */
+    /**
+     * Called when another activity is taking focus.
+     */
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(msg, "The onPause() event");
     }
 
-    /** Called when the activity is no longer visible. */
+    /**
+     * Called when the activity is no longer visible.
+     */
     @Override
     protected void onStop() {
         super.onStop();
         Log.d(msg, "The onStop() event");
     }
 
-    /** Called just before the activity is destroyed. */
+    /**
+     * Called just before the activity is destroyed.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -163,9 +172,9 @@ public class BGLActivity extends AppCompatActivity {
 
         Notification notification = new Notification.Builder(getApplicationContext())
                 .setContentTitle("BGL reading Remainder").setContentText("BGL Taking time sample notification")
-        .setTicker("Ticker Text").setSmallIcon(R.drawable.plus_white)
-        .setContentIntent(pi).setStyle(new Notification.BigTextStyle()
-                .bigText("Time to take BGL measurement ")).build();
+                .setTicker("Ticker Text").setSmallIcon(R.drawable.plus_white)
+                .setContentIntent(pi).setStyle(new Notification.BigTextStyle()
+                        .bigText("Time to take BGL measurement ")).build();
 
         // Get an instance of the notification manager
         NotificationManager noteManager = (NotificationManager)

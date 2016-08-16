@@ -27,11 +27,10 @@ import helper.domain.BGL;
 public class BGListViewFragment extends Fragment {
     List<BGL> bglList;
     BGLDBHelper dbHelper;
-    ListView listView ;
-    public BGListViewFragment() {
-        // Required empty public constructor
-    }
+    ListView listView;
 
+    public BGListViewFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,38 +38,67 @@ public class BGListViewFragment extends Fragment {
         bglList = new ArrayList<BGL>();
         dbHelper = new BGLDBHelper(this.getActivity());
 
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bgl_list_view, container, false);
     }
+
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         showWeeklyActivity();
     }
+
     public void showWeeklyActivity() {
         listView = (ListView) getView().findViewById(R.id.bglListView);
-        bglList = dbHelper.getAllBGL();
-        if(bglList.isEmpty()){
-            Toast.makeText(this.getActivity(),"No data is available to display", Toast.LENGTH_SHORT).show();
+        String fromDate = "2005-11-1";
+        String toDate = "2018-11-2";
+        bglList = dbHelper.getBGLBetweenDates(fromDate, toDate);
+//        bglList = dbHelper.getAllBGL();
+//
+        if (bglList.isEmpty()) {
+            Toast.makeText(this.getActivity(), "No data is available to display", Toast.LENGTH_SHORT).show();
             return;
         }
-        listView.setAdapter(new ArrayAdapter<BGL>(this.getActivity(), android.R.layout.simple_list_item_1, bglList));
+
+        ArrayAdapter<BGL> adapter = new ArrayAdapter<BGL>(this.getActivity(), android.R.layout.simple_list_item_1, bglList);
+        adapter.notifyDataSetChanged();
+        listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EditText tempText = new EditText(getActivity());
-                TextView tem = (TextView) view;
+                TextView temp = (TextView) view;
+                tempText.setText(temp.getText().toString());
 
-                tempText.setText(tem.getText().toString()+ "Hello " + view.toString());
-                Intent editBGLIntent = new Intent(getActivity(),AddBGLactivity.class);
-                editBGLIntent.putExtra("EXTRA_TEXT", tem.getText());
+                String[] itemString;
+                String idString = "";
+                String timeString = "";
+                String dateString = "";
+                String bglString = "";
+                String commentString = "";
 
-                Toast.makeText(getActivity(),"Item is clicked "+ id + tempText.getText().toString()+" "+ position, Toast.LENGTH_SHORT).show();
-                 startActivity(editBGLIntent);
+                //Strip out the values of id,time,date,bglvalue and comment from the clicked item.
+                if (tempText.getText().toString() != null) {
+                    itemString = tempText.getText().toString().split(",");
+                    idString = itemString[0].split("=")[1];
+                    timeString = itemString[1].split("=")[1];
+                    dateString = itemString[2].split("=")[1];
+                    bglString = itemString[3].split("=")[1];
+                    if (itemString[4].split("=").length > 1) {
+                        commentString = itemString[4].split("=")[1];
+                    }
+                }
 
+                Intent modifyIntent = new Intent(view.getContext(), ModifyBGLActivity.class);
+                modifyIntent.putExtra("id", idString);
+                modifyIntent.putExtra("date", dateString);
+                modifyIntent.putExtra("time", timeString);
+                modifyIntent.putExtra("bglValue", bglString);
+                modifyIntent.putExtra("comment", commentString);
+
+                startActivity(modifyIntent);
             }
         });
-
     }
 
 }

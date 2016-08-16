@@ -20,13 +20,12 @@ public class MedicationDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "DiabetesApp";
     private static final String DATABASE_TABLE = "MEDICATION";
 
-    private static final  String  KEY_ID = "_id";
-    private  static  final String KEY_TIME ="timeToTake";
+    private static final String KEY_ID = "_id";
+    private static final String KEY_TIME = "timeToTake";
     private static final String KEY_NAME = "medicationName";
     private static final String KEY_DOSAGE = "dosage";  // interms of ml , mg or oz
-    private static final String  KEY_FREQUENCY = "frequency";
+    private static final String KEY_FREQUENCY = "frequency";
     private static final String KEY_COMMENT = "comment";
-
 
 
     public MedicationDBHelper(Context context) {
@@ -37,7 +36,7 @@ public class MedicationDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlStatement = "CREATE TABLE " + DATABASE_TABLE + " ("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + KEY_TIME+ " TEXT , "
+                + KEY_TIME + " TEXT , "
                 + KEY_NAME + "  TEXT, "
                 + KEY_DOSAGE + " INTEGER"
                 + KEY_FREQUENCY + " INTEGER"
@@ -48,14 +47,13 @@ public class MedicationDBHelper extends SQLiteOpenHelper {
     }
 
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(" DROP TABLE IF EXISTS " + DATABASE_TABLE);
         onCreate(db);
     }
 
-    public  void insertMedication(Medication medication){
+    public void insertMedication(Medication medication) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -68,12 +66,11 @@ public class MedicationDBHelper extends SQLiteOpenHelper {
 
         try {
             rowInserted = db.insert(DATABASE_TABLE, null, cv);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.e("Error", e.toString());
             System.out.println("This is it" + e.getCause());
         }
-        if(rowInserted != -1)
+        if (rowInserted != -1)
             Log.i("Error", "Row inserted successfully");
 
         else {
@@ -82,15 +79,14 @@ public class MedicationDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<Medication> getListOfMedications(){
+    public List<Medication> getListOfMedications() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(DATABASE_TABLE, null, null, null, null, null, null);
         List<Medication> allMedications = new ArrayList<Medication>();
 
 
-
         cursor.moveToFirst();
-        while(!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             Medication medication = cursorToMedication(cursor);
             allMedications.add(medication);
             cursor.moveToNext();
@@ -100,16 +96,15 @@ public class MedicationDBHelper extends SQLiteOpenHelper {
         return allMedications;
     }
 
-    public List<Medication> getMedicationsByTime(String time){
+    public List<Medication> getMedicationsByTime(String time) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(DATABASE_TABLE, null, null, null, null, null, null);
         List<Medication> allMedications = new ArrayList<Medication>();
 
 
-
         cursor.moveToFirst();
-        while(!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             Medication medication = cursorToMedication(cursor);
             allMedications.add(medication);
             cursor.moveToNext();
@@ -120,7 +115,7 @@ public class MedicationDBHelper extends SQLiteOpenHelper {
     }
 
     private Medication cursorToMedication(Cursor cursor) {
-        Medication  medication=  new Medication(
+        Medication medication = new Medication(
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getInt(3),

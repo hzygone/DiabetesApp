@@ -12,11 +12,11 @@ public class BloodGlucoseReading {
     private Time time;
     private int BloodGlucoseLevel;
 
-    public BloodGlucoseReading(){
+    public BloodGlucoseReading() {
 
     }
 
-    public BloodGlucoseReading(Date d, Time t, int bgl){
+    public BloodGlucoseReading(Date d, Time t, int bgl) {
         date = d;
         time = t;
         BloodGlucoseLevel = bgl;

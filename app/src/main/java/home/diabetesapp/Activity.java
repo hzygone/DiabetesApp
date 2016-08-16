@@ -14,11 +14,11 @@ public class Activity {
     private Time time;
     private int duration;
 
-    public Activity(){
+    public Activity() {
 
     }
 
-    public Activity(Date d, Time t, int dura){
+    public Activity(Date d, Time t, int dura) {
         date = d;
         time = t;
         duration = dura;

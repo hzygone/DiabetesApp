@@ -17,11 +17,11 @@ public class NutritionDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "DiabetesApp";
     private static final String DATABASE_TABLE = "BGL";
 
-    private static final  String  KEY_ID = "_id";
-    private  static  final String KEY_TIME_STAMP ="timeStamp";
+    private static final String KEY_ID = "_id";
+    private static final String KEY_TIME_STAMP = "timeStamp";
+    private static final String KEY_DATE_STAMP = "dateStamp";
     private static final String KEY_BG_READING = "bgReading";
     private static final String KEY_COMMENT = "comment";
-
 
 
     public NutritionDBHelper(Context context) {
@@ -41,14 +41,13 @@ public class NutritionDBHelper extends SQLiteOpenHelper {
     }
 
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(" DROP TABLE IF EXISTS " + DATABASE_TABLE);
         onCreate(db);
     }
 
-    public  void addBGL(BGL bgl){
+    public void addBGL(BGL bgl) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -59,12 +58,11 @@ public class NutritionDBHelper extends SQLiteOpenHelper {
 
         try {
             rowInserted = db.insert(DATABASE_TABLE, null, cv);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.e("Error", e.toString());
             System.out.println("This is it" + e.getCause());
         }
-        if(rowInserted != -1)
+        if (rowInserted != -1)
             Log.i("Error", "Row inserted successfully");
 
         else {
@@ -73,19 +71,21 @@ public class NutritionDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public BGL getBGLByTime(String bglTime){
+    public BGL getBGLByTime(String bglTime) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_TIME_STAMP, KEY_BG_READING, KEY_COMMENT},
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_TIME_STAMP, KEY_DATE_STAMP, KEY_BG_READING, KEY_COMMENT},
                 null, null, null, null, null);
 //        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_TIME_STAMP, KEY_BG_READING, KEY_COMMENT},
 //                KEY_TIME_STAMP + " =? ", new String[] {String.valueOf(bglTime)}, null , null,null,null);
         BGL bgl = null;
-        if(cursor != null){
+        if (cursor != null) {
             cursor.moveToFirst();
-            bgl =  new BGL(
-                    cursor.getString(0),
-                    cursor.getInt(1),
-                    cursor.getString(2));
+            bgl = new BGL(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getString(4));
         }
 
 

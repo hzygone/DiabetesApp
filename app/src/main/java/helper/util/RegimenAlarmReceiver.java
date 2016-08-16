@@ -49,13 +49,15 @@ public class RegimenAlarmReceiver extends WakefulBroadcastReceiver {
     }
 
     // BEGIN_INCLUDE(set_alarm)
+
     /**
      * Sets a repeating alarm that runs once a day at approximately 8:30 a.m. When the
      * alarm fires, the app broadcasts an Intent to this WakefulBroadcastReceiver.
+     *
      * @param context
      */
     public void setAlarm(Context context) {
-        alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, RegimenAlarmReceiver.class);
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
@@ -83,15 +85,15 @@ public class RegimenAlarmReceiver extends WakefulBroadcastReceiver {
 
     /**
      * Cancels the alarm.
+     *
      * @param context
      */
     public void cancelAlarm(Context context) {
         // If the alarm has been set, cancel it.
-        if (alarmMgr!= null) {
+        if (alarmMgr != null) {
             alarmMgr.cancel(alarmIntent);
-        }
-        else{
-            Toast.makeText(context,"No Alarm has been set", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "No Alarm has been set", Toast.LENGTH_SHORT).show();
         }
 
         // Disable {@code RegimenAlarmBootReceiver} so that it doesn't automatically restart the

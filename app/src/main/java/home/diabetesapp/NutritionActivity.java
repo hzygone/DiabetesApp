@@ -28,7 +28,7 @@ public class NutritionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nutrition);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if(toolbar != null) {
+        if (toolbar != null) {
             toolbar.setTitle("Nutrition");
             toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 124, 194, 131)));
@@ -43,11 +43,11 @@ public class NutritionActivity extends AppCompatActivity {
         ArrayList<Entry> valsComp1 = new ArrayList<Entry>();
         ArrayList<Entry> valsComp2 = new ArrayList<Entry>();
 
-        for(int i = 0; i < 10; i++){
-            if(i % 2 == 0){
-                valsComp1.add(new Entry((float)i, 0));
-            } else{
-                valsComp2.add(new Entry((float)i, 1));
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                valsComp1.add(new Entry((float) i, 0));
+            } else {
+                valsComp2.add(new Entry((float) i, 1));
             }
         }
 
@@ -61,13 +61,16 @@ public class NutritionActivity extends AppCompatActivity {
         dataSets.add(setComp2);
 
         ArrayList<String> xVals = new ArrayList<String>();
-        xVals.add("1.Q"); xVals.add("2.Q"); xVals.add("3.Q"); xVals.add("4.Q");
+        xVals.add("1.Q");
+        xVals.add("2.Q");
+        xVals.add("3.Q");
+        xVals.add("4.Q");
 
         LineData data = new LineData(dataSets);
         //END DUMMY DATA
 
         LineChart chart = (LineChart) findViewById(R.id.NutritionChart);
-        if(chart != null) {
+        if (chart != null) {
             chart.setBackgroundColor(12);
             chart.setDescription("Nutrition Level");
             chart.setData(data);
@@ -97,35 +100,45 @@ public class NutritionActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Called when the activity is about to become visible. */
+    /**
+     * Called when the activity is about to become visible.
+     */
     @Override
     protected void onStart() {
         super.onStart();
         Log.d(msg, "The onStart() event");
     }
 
-    /** Called when the activity has become visible. */
+    /**
+     * Called when the activity has become visible.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(msg, "The onResume() event");
     }
 
-    /** Called when another activity is taking focus. */
+    /**
+     * Called when another activity is taking focus.
+     */
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(msg, "The onPause() event");
     }
 
-    /** Called when the activity is no longer visible. */
+    /**
+     * Called when the activity is no longer visible.
+     */
     @Override
     protected void onStop() {
         super.onStop();
         Log.d(msg, "The onStop() event");
     }
 
-    /** Called just before the activity is destroyed. */
+    /**
+     * Called just before the activity is destroyed.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();

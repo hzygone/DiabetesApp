@@ -1,5 +1,6 @@
 package home.diabetesapp;
 
+import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -16,9 +17,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import helper.database.BGLDBHelper;
@@ -31,7 +35,11 @@ public class BGLActivity extends AppCompatActivity {
     public String msg;
     private String m_Text = "";
 
-    Button btnWeeklyActivity, btnMonthlyActivity, btnGraphView;
+    Button btnWeeklyActivity, btnMonthlyActivity, btnGraphView, btnDateFrom, btnDateTo;
+    EditText textDateFrom, textDateTo;
+
+    private int mYear, mMonth, mDay, mHour, mMinute;
+
 
 
     @Override
@@ -47,8 +55,15 @@ public class BGLActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         btnWeeklyActivity = (Button) findViewById(R.id.btnweeklyActivity);
-        btnMonthlyActivity = (Button) findViewById(R.id.btnMonthlyActivity);
+        btnMonthlyActivity = (Button) findViewById(R.id.btnListView);
         btnGraphView = (Button) findViewById(R.id.btnGraphView);
+
+        textDateFrom = (EditText) findViewById(R.id.textDateFrom);
+        textDateTo = (EditText) findViewById(R.id.textDateTo);
+
+        btnDateFrom = (Button) findViewById(R.id.btnDatePickerFrom);
+        btnDateTo =(Button) findViewById(R.id.btnDatePickerTo);
+
         dbHelper = new BGLDBHelper(this);
         bglList = new ArrayList<BGL>();
         // Todo - need to implement custom alarm(notification) handler
@@ -78,17 +93,6 @@ public class BGLActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //    public void showWeeklyActivity(View view) {
-//        bglList = dbHelper.getAllBGL();
-//        listView.setAdapter(new ArrayAdapter<BGL>(this, android.R.layout.simple_list_item_1, bglList));
-//    }
-//
-//    public void showMonthlyActivity(View view) {
-//
-//        bglList = dbHelper.getAllBGL();
-//        listView.setAdapter(new ArrayAdapter<BGL>(this, android.R.layout.simple_list_item_1, bglList));
-//
-//    }
     public void onClick(View view) {
         FragmentManager fm = getFragmentManager();
 
@@ -113,7 +117,45 @@ public class BGLActivity extends AppCompatActivity {
             ft.replace(R.id.fragmentContainer, bglFragment);
             ft.commit();
 
-        } else {
+        }
+        else if(view == btnDateFrom){
+            final Calendar calender = Calendar.getInstance();
+            mYear = calender.get(Calendar.YEAR);
+            mMonth = calender.get(Calendar.MONTH);
+            mDay = calender.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    // Dateformal YYYY-MM-DD
+                    monthOfYear = monthOfYear + 1;
+                    textDateFrom.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+                }
+            }, mYear, mMonth, mDay);
+            datePickerDialog.show();
+
+        }
+
+        else if(view == btnDateTo){
+            final Calendar calender = Calendar.getInstance();
+            mYear = calender.get(Calendar.YEAR);
+            mMonth = calender.get(Calendar.MONTH);
+            mDay = calender.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    // Dateformal YYYY-MM-DD
+                    monthOfYear = monthOfYear + 1;
+                    textDateTo.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+                }
+            }, mYear, mMonth, mDay);
+            datePickerDialog.show();
+
+        }
+        else {
             //
         }
     }

@@ -12,43 +12,73 @@
     tools:context=".BGLActivity"
     tools:showIn="@layout/activity_bglactivity">
 
-    <RelativeLayout
+<RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/activityColorMaster"
         android:id="@+id/menuBarLayout"
         android:layout_marginLeft="0dp"
         >
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Weekly"
-            android:gravity="center"
-            android:id="@+id/btnweeklyActivity"
+            android:text="From: "
+            android:id="@+id/btnDatePickerFrom"
+            android:onClick="onClick"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="6"
+            android:id="@+id/textDateFrom"
+            android:hint="YYYY-MM-DD"
+            android:layout_below="@id/btnDatePickerFrom"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To:"
+            android:layout_alignRight="@+id/btnDatePickerFrom"
+            android:layout_alignLeft="@+id/btnDatePickerFrom"
+            android:layout_below="@+id/textDateFrom"
+            android:id="@+id/btnDatePickerTo"
+            android:onClick="onClick"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="6"
+            android:id="@+id/textDateTo"
+            android:hint="YYYY-MM-DD"
+            android:layout_below="@id/btnDatePickerTo"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List \n View"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/btnListView"
+            android:layout_below="@+id/textDateTo"
             android:onClick="onClick"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monthly"
-            android:layout_below="@+id/btnweeklyActivity"
-            android:id="@+id/btnMonthlyActivity"
-            android:onClick="onClick"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Graph View"
-            android:layout_below="@+id/btnMonthlyActivity"
+            android:text="Graph \n View"
+            android:layout_below="@+id/textDateTo"
+            android:layout_toRightOf="@+id/btnListView"
             android:id="@+id/btnGraphView"
             android:onClick="onClick"/>
     </RelativeLayout>
+
     <FrameLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/menuBarLayout"
+        android:background="@color/colorFragmentDetail"
         android:id="@+id/fragmentContainer"
         android:orientation="vertical">
-
     </FrameLayout>
-
 </RelativeLayout>

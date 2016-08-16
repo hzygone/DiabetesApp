@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,6 +31,9 @@ public class GraphViewFragment extends Fragment {
     BGLDBHelper dbHelper;
     GraphView bglLineGraph;
 
+    EditText textDateFrom, textDateTo;
+
+
 
     public GraphViewFragment() {
         // Required empty public constructor
@@ -41,6 +45,11 @@ public class GraphViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         bglList = new ArrayList<BGL>();
         dbHelper = new BGLDBHelper(this.getActivity());
+
+        textDateFrom = (EditText) this.getActivity().findViewById(R.id.textDateFrom);
+        textDateTo = (EditText) this.getActivity().findViewById(R.id.textDateTo);
+
+        Log.i("INFO", "TextDateFrom is : "+ textDateFrom.getText() + ", TextDateTo is: "+ textDateTo.getText());
 
 
         // Inflate the layout for this fragment
@@ -66,11 +75,15 @@ public class GraphViewFragment extends Fragment {
         bglLineGraph = (GraphView) getView().findViewById(R.id.bglgraph);
         bglLineGraph.setTitle("BGL Graph");
         Log.i("INFO", "After graph is instantiated");
-        bglList = dbHelper.getAllBGL();
+
+        Log.i("INFO", "TextDateFrom is : "+ textDateFrom.getText() + ", TextDateTo is: "+ textDateTo.getText());
+
+        bglList = dbHelper.getBGLBetweenDates(textDateFrom.getText().toString(), textDateTo.getText().toString());
+
         int len = bglList.size();
         final DataPoint[] bglDataPoint = new DataPoint[len];
         if (bglList.isEmpty()) {
-            Toast.makeText(this.getActivity(), "No data is available to display", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getActivity(), "No data is available for the selected dates to display", Toast.LENGTH_SHORT).show();
             return;
         }
         int counter = 0;

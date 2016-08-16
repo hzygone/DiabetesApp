@@ -31,13 +31,13 @@
             android:layout_height="wrap_content"
             android:text="Monthly"
             android:layout_below="@+id/btnweeklyActivity"
-            android:id="@+id/btnMonthlyActivity"
+            android:id="@+id/btnListView"
             android:onClick="onClick"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Graph View"
-            android:layout_below="@+id/btnMonthlyActivity"
+            android:layout_below="@+id/btnListView"
             android:id="@+id/btnGraphView"
             android:onClick="onClick"/>
     </RelativeLayout>

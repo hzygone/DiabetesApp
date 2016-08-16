@@ -4,6 +4,7 @@ package home.diabetesapp;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,8 @@ public class BGListViewFragment extends Fragment {
     BGLDBHelper dbHelper;
     ListView listView;
 
+    EditText textDateFrom, textDateTo;
+
     public BGListViewFragment() {
     }
 
@@ -38,24 +41,28 @@ public class BGListViewFragment extends Fragment {
         bglList = new ArrayList<BGL>();
         dbHelper = new BGLDBHelper(this.getActivity());
 
+        textDateFrom = (EditText) this.getActivity().findViewById(R.id.textDateFrom);
+        textDateTo = (EditText) this.getActivity().findViewById(R.id.textDateTo);
+
+        Log.i("INFO", "TextDateFrom is : "+ textDateFrom.getText() + ", TextDateTo is: "+ textDateTo.getText());
+
         return inflater.inflate(R.layout.fragment_bgl_list_view, container, false);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        showWeeklyActivity();
+        showCustomListView();
     }
 
-    public void showWeeklyActivity() {
+    public void showCustomListView() {
         listView = (ListView) getView().findViewById(R.id.bglListView);
-        String fromDate = "2005-11-1";
-        String toDate = "2018-11-2";
-        bglList = dbHelper.getBGLBetweenDates(fromDate, toDate);
-//        bglList = dbHelper.getAllBGL();
-//
+        Log.i("INFO", "TextDateFrom is : "+ textDateFrom.getText() + ", TextDateTo is: "+ textDateTo.getText());
+
+        bglList = dbHelper.getBGLBetweenDates(textDateFrom.getText().toString(), textDateTo.getText().toString());
+
         if (bglList.isEmpty()) {
-            Toast.makeText(this.getActivity(), "No data is available to display", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getActivity(), "No data is available for the selected dates to display", Toast.LENGTH_SHORT).show();
             return;
         }
 

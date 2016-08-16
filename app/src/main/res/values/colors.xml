@@ -8,4 +8,5 @@
     <color name="lightBlue">#00ff00</color>
     <color name="activityColorMaster">#05a1a1</color>
     <color name="colorNote">#ced4cd</color>
+    <color name ="colorInput">#ffffff</color>
 </resources>

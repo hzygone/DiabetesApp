@@ -30,7 +30,7 @@ public class ExerciseActivty extends AppCompatActivity {
         }
         setSupportActionBar(toolbar);
 
-        monthly = (Button) findViewById(R.id.btnMonthlyActivity);
+        monthly = (Button) findViewById(R.id.btnListView);
         graphView = (Button) findViewById(R.id.btnGraphView);
 
     }

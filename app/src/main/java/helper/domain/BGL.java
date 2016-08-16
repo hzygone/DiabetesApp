@@ -65,11 +65,11 @@ public class BGL {
     @Override
     public String toString() {
         return
-                "id=" + id +
-                        ", timeStamp=" + timeStamp +
-                        ", dateStamp=" + dateStamp +
-                        ", bgReading=" + bgReading +
-                        ", comment=" + comment
+                "Id=" + id +
+                        ", Time=" + timeStamp +
+                        ", Date=" + dateStamp +
+                        ", BGL=" + bgReading +
+                        ", Comment=" + comment
                 ;
     }
 }

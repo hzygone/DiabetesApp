@@ -29,10 +29,10 @@ import helper.database.BGLDBHelper;
 import helper.domain.BGL;
 
 public class BGLActivity extends AppCompatActivity {
-    ListView listView;
-    private List<BGL> bglList;
-    BGLDBHelper dbHelper;
     public String msg;
+    ListView listView;
+    BGLDBHelper dbHelper;
+    private List<BGL> bglList;
     private String m_Text = "";
 
     Button btnWeeklyActivity, btnMonthlyActivity, btnGraphView, btnDateFrom, btnDateTo;

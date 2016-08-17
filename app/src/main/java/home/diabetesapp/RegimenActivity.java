@@ -39,6 +39,10 @@ public class RegimenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regimen);
 
+          /* Retrieve a PendingIntent that will perform a broadcast */
+        Intent alarmIntent = new Intent(RegimenActivity.this, AlarmReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(RegimenActivity.this, 0, alarmIntent, 0);
+
         btnStartReminder = (Button) findViewById(R.id.btnStartReminder);
         BGLbox = (CheckBox) findViewById(R.id.BGLbox);
         Exercisebox = (CheckBox) findViewById(R.id.exercisebox);
@@ -49,9 +53,7 @@ public class RegimenActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
         }
 
-        /* Retrieve a PendingIntent that will perform a broadcast */
-        Intent alarmIntent = new Intent(RegimenActivity.this, AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(RegimenActivity.this, 0, alarmIntent, 0);
+
 
         findViewById(R.id.btnStartReminder).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         if (BGLbutton != null) {
             BGLbutton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent i = new Intent(MainActivity.this, BGLActivity.class);
+                    Intent i = new Intent(MainActivity.this, BGLactivity.class);
                     startActivity(i);
                 }
 

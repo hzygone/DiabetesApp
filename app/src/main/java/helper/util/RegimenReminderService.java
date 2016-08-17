@@ -8,8 +8,8 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import home.diabetesapp.AddBGLActivity;
-import home.diabetesapp.BGLActivity;
+import home.diabetesapp.AddBGLactivity;
+import home.diabetesapp.BGLactivity;
 import home.diabetesapp.R;
 /**
  * Created by Asmamaw on 8/7/16.
@@ -46,13 +46,13 @@ public class RegimenReminderService extends IntentService {
     private void sendNotification(String msg) {
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent openBGLActivity = new Intent(getBaseContext(), AddBGLActivity.class);
+        Intent openBGLActivity = new Intent(getBaseContext(), AddBGLactivity.class);
         openBGLActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
        // startActivity(openBGLActivity);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, BGLActivity.class), 0);
+                new Intent(this, BGLactivity.class), 0);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)

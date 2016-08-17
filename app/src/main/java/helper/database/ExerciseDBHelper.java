@@ -21,8 +21,9 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_TABLE = "ACTIVITY";
 
     private static final String KEY_ID = "_id";     // primary key of the Activity table
-    private static final String KEY_TIME_STAMP = "timeStamp";  //can be entered manually
     private static final String KEY_ACTIVITY_NAME = "activityName"; // type of name of the exercise
+    private static final String KEY_DATE_STAMP = "dateStamp";
+    private static final String KEY_TIME_STAMP = "timeStamp";  //can be entered manually
     private static final String KEY_DURATION = "duration";   // activity duration in minutes
     private static final String KEY_COMMENT = "comment";     // notes about the activity
 
@@ -35,9 +36,10 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlStatement = "CREATE TABLE " + DATABASE_TABLE + " ("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + KEY_TIME_STAMP + " TEXT DATETIME DEFAULT CURRENT_TIMESTAMP , "
                 + KEY_ACTIVITY_NAME + "  TEXT, "
-                + KEY_DURATION + " INTEGER, "
+                + KEY_DATE_STAMP + " TEXT NOT NULL ,"
+                + KEY_TIME_STAMP + " TEXT   NOT NULL , "
+                + KEY_DURATION + " INTEGER NOT NULL , "
                 + KEY_COMMENT + " TEXT " + " )";
 
         db.execSQL(sqlStatement);
@@ -56,6 +58,7 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         cv.put(KEY_TIME_STAMP, activity.getTimeStamp());
+        cv.put(KEY_DATE_STAMP, activity.getDateStamp());
         cv.put(KEY_ACTIVITY_NAME, activity.getActivityName());
         cv.put(KEY_DURATION, activity.getDuration());
         cv.put(KEY_COMMENT, activity.getComment());
@@ -76,6 +79,26 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
             Log.e("Error", "Row is not inserted");
         }
         db.close();
+    }
+
+    //from and to  arguments should be formatted as YYYY-MM-DD
+    public List<Exercise> getExerciseBetweenDates(String fromDate, String toDate) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<Exercise> bglList = new ArrayList<Exercise>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_DATE_STAMP + " BETWEEN '" + fromDate + " ' AND '" + toDate + "'", null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Exercise exercise = cursorToExercise(cursor);
+            bglList.add(exercise);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        db.close();
+
+
+        return bglList;
     }
 
     public List<Exercise> getAllActivity() {
@@ -99,10 +122,12 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
 
     public Exercise cursorToExercise(Cursor cursor) {
         Exercise activity = new Exercise(
+                cursor.getInt(0),
                 cursor.getString(1),
                 cursor.getString(2),
-                cursor.getInt(3),
-                cursor.getString(4));
+                cursor.getString(3),
+                cursor.getInt(4),
+                cursor.getString(5));
         return activity;
 
     }

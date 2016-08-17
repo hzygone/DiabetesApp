@@ -34,7 +34,8 @@
         android:inputType="text"
         android:ems="10"
         android:layout_alignTop="@+id/NoM"
-        android:layout_toEndOf="@+id/NoM" />
+        android:layout_toEndOf="@+id/NoM"
+        android:layout_toRightOf="@+id/NoM" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
         android:text="Time: "
         android:id="@+id/textView2"
         android:layout_below="@+id/editMedication"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -54,7 +56,8 @@
         android:layout_below="@+id/editMedication"
         android:layout_toEndOf="@+id/textView2"
         android:layout_alignLeft="@+id/editMedication"
-        android:layout_alignRight="@+id/editMedication"/>
+        android:layout_alignRight="@+id/editMedication"
+        android:layout_toRightOf="@+id/textView2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,7 +76,7 @@
         android:id="@+id/Mondaycheck"
         android:layout_below="@+id/textView3"
         android:layout_alignParentStart="true"
-         />
+        android:layout_alignParentLeft="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -81,7 +84,8 @@
         android:text="Tuesday"
         android:id="@+id/Tuesdaycheck"
         android:layout_alignTop="@+id/Mondaycheck"
-        android:layout_toEndOf="@+id/Mondaycheck" />
+        android:layout_toEndOf="@+id/Mondaycheck"
+        android:layout_toRightOf="@+id/Mondaycheck" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -89,7 +93,8 @@
         android:text="Wednesday"
         android:id="@+id/Wednesdaycheck"
         android:layout_alignTop="@+id/Tuesdaycheck"
-        android:layout_toEndOf="@+id/Tuesdaycheck" />
+        android:layout_toEndOf="@+id/Tuesdaycheck"
+        android:layout_toRightOf="@+id/Tuesdaycheck" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -97,7 +102,8 @@
         android:text="Thursday"
         android:id="@+id/Thursdaycheck"
         android:layout_below="@+id/Mondaycheck"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -105,7 +111,8 @@
         android:text="Friday"
         android:id="@+id/Fridaycheck"
         android:layout_below="@+id/Mondaycheck"
-        android:layout_toEndOf="@+id/Thursdaycheck" />
+        android:layout_toEndOf="@+id/Thursdaycheck"
+        android:layout_toRightOf="@+id/Thursdaycheck" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -113,7 +120,8 @@
         android:text="Saturday"
         android:id="@+id/Saturdaycheck"
         android:layout_below="@+id/Wednesdaycheck"
-        android:layout_alignStart="@+id/Wednesdaycheck" />
+        android:layout_alignStart="@+id/Wednesdaycheck"
+        android:layout_alignLeft="@+id/Wednesdaycheck" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -121,7 +129,8 @@
         android:text="Sunday"
         android:id="@+id/Sundaycheck"
         android:layout_below="@+id/Thursdaycheck"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -144,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Note: \nUse this screen to enter your medication and when you want your reminders."
+            android:text="Note: \nUse this screen to enter your medication."
             android:id="@+id/textView"
             android:layout_marginLeft="20dp"
             android:layout_alignParentTop="true"

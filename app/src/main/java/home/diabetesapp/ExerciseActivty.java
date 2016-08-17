@@ -1,5 +1,6 @@
 package home.diabetesapp;
 
+import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,11 +13,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+
+import java.util.Calendar;
 
 public class ExerciseActivty extends AppCompatActivity {
-    Button monthly, graphView;
+    private Button btnListView, btnDateFrom, btnDateTo;
+    private EditText textDateFrom, textDateTo;
 
-    public String msg;
+    private int mYear, mMonth, mDay, mHour, mMinute;
+
+    private String msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +32,18 @@ public class ExerciseActivty extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_activty);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
-            toolbar.setTitle("Activity");
+            toolbar.setTitle("Exercise Activity");
             toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 255, 180, 65)));
         }
         setSupportActionBar(toolbar);
 
-        monthly = (Button) findViewById(R.id.btnListView);
-        graphView = (Button) findViewById(R.id.btnGraphView);
+        btnListView = (Button) findViewById(R.id.btnListView);
+        btnDateFrom = (Button) findViewById(R.id.btnDatePickerFrom);
+        btnDateTo = (Button) findViewById(R.id.btnDatePickerTo);
+
+        textDateFrom = (EditText) findViewById(R.id.textDateFrom);
+        textDateTo = (EditText) findViewById(R.id.textDateTo);
 
     }
 
@@ -57,20 +69,48 @@ public class ExerciseActivty extends AppCompatActivity {
     public void onClick(View view) {
         FragmentManager fm = getFragmentManager();
 
-        if (view == monthly) {
+        if (view == btnListView) {
             android.app.FragmentTransaction ft = fm.beginTransaction();
-            BGListViewFragment bglFragmentView = new BGListViewFragment();
-            ft.replace(R.id.fragmentContainer, bglFragmentView);
+            ExerciseListViewFragment exerciseFragmentView = new ExerciseListViewFragment();
+            ft.replace(R.id.fragmentContainer, exerciseFragmentView);
             ft.commit();
 
 
-        } else if (view == graphView) {
-            android.app.FragmentTransaction ft = fm.beginTransaction();
-            GraphViewFragment bglFragmentView = new GraphViewFragment();
-            ft.replace(R.id.fragmentContainer, bglFragmentView);
-            ft.commit();
+        } else if (view == btnDateFrom) {
+            final Calendar calender = Calendar.getInstance();
+            mYear = calender.get(Calendar.YEAR);
+            mMonth = calender.get(Calendar.MONTH);
+            mDay = calender.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    // Dateformal YYYY-MM-DD
+                    monthOfYear = monthOfYear + 1;
+                    textDateFrom.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+                }
+            }, mYear, mMonth, mDay);
+            datePickerDialog.show();
+
+        } else if (view == btnDateTo) {
+            final Calendar calender = Calendar.getInstance();
+            mYear = calender.get(Calendar.YEAR);
+            mMonth = calender.get(Calendar.MONTH);
+            mDay = calender.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    // Dateformal YYYY-MM-DD
+                    monthOfYear = monthOfYear + 1;
+                    textDateTo.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+                }
+            }, mYear, mMonth, mDay);
+            datePickerDialog.show();
         } else {
-            // place holder for the remaining views
+            //
         }
     }
 

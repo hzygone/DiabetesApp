@@ -65,7 +65,7 @@ public class BGL {
     @Override
     public String toString() {
         return
-                "Id=" + id +
+                "ID=" + id +
                         ", Time=" + timeStamp +
                         ", Date=" + dateStamp +
                         ", BGL=" + bgReading +

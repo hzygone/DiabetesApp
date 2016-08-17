@@ -28,9 +28,9 @@
         android:text="Blood Glucose"
         android:id="@+id/BGLbutton"
         android:layout_toEndOf="@+id/ActivityButton"
-        android:backgroundTint="#ED5454"
+        android:backgroundTint="@color/colorBGL"
         android:textColor="#FFFFFF"
-        />
+        android:layout_toRightOf="@+id/ActivityButton" />
 
     <Button
         android:layout_width="180dp"
@@ -38,7 +38,7 @@
         android:text="Medication"
         android:id="@+id/MedicationButton"
         android:layout_below="@+id/ActivityButton"
-        android:backgroundTint="#35B7F3"
+        android:backgroundTint="@color/colorMedication"
         android:textColor="#FFFFFF"
         />
 
@@ -49,9 +49,9 @@
         android:id="@+id/NutritionButton"
         android:layout_below="@+id/BGLbutton"
         android:layout_toEndOf="@+id/MedicationButton"
-        android:backgroundTint="#69BA6D"
+        android:backgroundTint="@color/colorNutrition"
         android:textColor="#FFFFFF"
-        />
+        android:layout_toRightOf="@+id/MedicationButton" />
 
     <Button
         android:layout_width="360dp"
@@ -59,7 +59,7 @@
         android:text="Regimen"
         android:id="@+id/RegimenButton"
         android:layout_below="@+id/MedicationButton"
-        android:backgroundTint="#78909C"
+        android:backgroundTint="@color/colorRegimen"
         android:textColor="#FFFFFF"
         />
 

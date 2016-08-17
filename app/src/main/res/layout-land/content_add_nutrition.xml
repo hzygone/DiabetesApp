@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:id="@+id/textDietName"
         android:layout_toRightOf="@+id/textDietNameLabel"
@@ -42,7 +41,7 @@
         android:id="@+id/textDate"
         android:layout_marginTop="5dp"
         android:hint="YYYY-MM-DD"
-        android:layout_alignParentRight="true"
+        android:ems="10"
         android:layout_toRightOf="@+id/btnDatePicker"
         android:layout_below="@+id/textDietNameLabel"/>
     <Button
@@ -59,7 +58,7 @@
         android:id="@+id/textTime"
         android:hint="HH:MM"
         android:layout_marginTop="5dp"
-        android:layout_alignParentRight="true"
+        android:ems="10"
         android:layout_below="@id/btnDatePicker"
         android:layout_toRightOf="@+id/btnTimePicker"/>
 
@@ -79,9 +78,8 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:layout_alignLeft="@+id/textDate"
-        android:ems="10"
         android:id="@+id/textQuantity"
-        android:layout_alignParentRight="true"
+        android:ems="10"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/textQuantityLabel"
         android:layout_below="@+id/textTime"/>
@@ -103,7 +101,6 @@
         android:layout_alignLeft="@+id/textDate"
         android:ems="10"
         android:id="@+id/textComment"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/textCommentLable"
         android:layout_below="@+id/textQuantity"/>
@@ -115,14 +112,15 @@
         android:id="@+id/AddNutritionButton"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="88dp"
-        android:layout_below="@+id/textComment"/>
+        android:layout_toRightOf="@+id/textDietName"
+        android:layout_below="@+id/textDietNameLabel"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/AddNutritionButton"
         android:text="Cancel"
         android:id="@+id/CancelNutritionButton"
-        android:layout_toRightOf="@+id/AddNutritionButton"
-        android:layout_below="@+id/textComment" />
+        android:layout_toRightOf="@+id/textComment"
+        android:layout_below="@+id/textTime" />
 
 </RelativeLayout>

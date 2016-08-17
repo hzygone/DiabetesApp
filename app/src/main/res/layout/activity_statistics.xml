@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="home.diabetesapp.StatisticsActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="DATE FROM: "
+        android:id="@+id/btnDatePickerFrom"
+        android:paddingTop="5dp"
+        android:onClick="onClick"
+        android:layout_alignParentLeft="true" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textDateFrom"
+        android:hint="YYYY-MM-DD"
+        android:layout_toRightOf="@id/btnDatePickerFrom"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:onClick="onClick"
+        android:layout_alignRight="@id/btnDatePickerFrom"
+        android:layout_below="@id/btnDatePickerFrom"
+        android:text="DATE TO: "
+        android:id="@+id/btnDatePickerTo"
+        android:paddingTop="5dp"
+        android:layout_alignParentLeft="true" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textDateTo"
+        android:layout_below="@id/btnDatePickerFrom"
+        android:hint="YYYY-MM-DD"
+        android:layout_toRightOf="@id/btnDatePickerTo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAverageBGLLabel"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/btnDatePickerTo"
+        android:background="@color/colorNote"
+        android:text="Average BGL: "/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAverageBGLValue"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/btnDatePickerTo"
+        android:text="average BGL"
+        android:layout_toRightOf="@+id/textAverageBGLLabel"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMaxBGLLable"
+        android:background="@color/colorNote"
+        android:layout_below="@+id/textAverageBGLLabel"
+        android:text="Maximum BGL: "/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMaxBGLValue"
+        android:text="maximum value"
+        android:layout_below="@+id/textAverageBGLLabel"
+        android:layout_toRightOf="@+id/textMaxBGLLable"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textVarianceLabel"
+        android:text="Variance: "
+        android:background="@color/colorNote"
+        android:layout_below="@+id/textMinBGLLabel"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textVarianceValue"
+        android:layout_below="@+id/textMinBGLLabel"
+        android:text="variance of BGL value"
+        android:layout_toRightOf="@+id/textVarianceLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMinBGLLabel"
+        android:background="@color/colorNote"
+        android:layout_below="@+id/textMaxBGLLable"
+        android:text="minimum BGL value"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMinBGLValue"
+        android:layout_below="@+id/textMaxBGLLable"
+        android:layout_toRightOf="@+id/textMinBGLLabel"/>
+
+</RelativeLayout>

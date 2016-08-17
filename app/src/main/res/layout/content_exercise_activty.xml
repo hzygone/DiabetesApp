@@ -9,45 +9,69 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ExerciseActivty"
+    tools:context=".BGLActivity"
     tools:showIn="@layout/activity_exercise_activty">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorMaster"
         android:id="@+id/menuBarLayout"
         >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Weekly"
-            android:id="@+id/btnweeklyActivity"
-            android:onClick="onClick"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Monthly"
-            android:layout_toRightOf="@+id/btnweeklyActivity"
-            android:id="@+id/btnListView"
-            android:onClick="onClick"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Graph View"
-            android:layout_toEndOf="@id/btnListView"
-            android:id="@+id/btnGraphView"
-            android:onClick="onClick"
-            android:layout_toRightOf="@id/btnListView" />
-    </LinearLayout>
-<LinearLayout
-    android:layout_marginTop="20dp"
-    android:layout_below="@+id/menuBarLayout"
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:layout_alignParentBottom="true"
-    android:id="@+id/fragmentContainer"
-    android:orientation="horizontal">
 
-</LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From: "
+            android:id="@+id/btnDatePickerFrom"
+            android:onClick="onClick"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/textDateFrom"
+            android:hint="YYYY-MM-DD"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/btnDatePickerFrom" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To:"
+            android:layout_alignRight="@+id/btnDatePickerFrom"
+            android:layout_alignLeft="@+id/btnDatePickerFrom"
+            android:layout_below="@+id/btnDatePickerFrom"
+            android:id="@+id/btnDatePickerTo"
+            android:onClick="onClick"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/textDateTo"
+            android:hint="YYYY-MM-DD"
+            android:layout_below="@id/textDateFrom"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/btnDatePickerTo" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List View"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/btnListView"
+            android:layout_below="@+id/btnDatePickerTo"
+            android:onClick="onClick"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/menuBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/fragmentContainer"
+        android:orientation="horizontal">
+
+    </LinearLayout>
 
 </RelativeLayout>

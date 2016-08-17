@@ -7,16 +7,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".AddNutritionActivity">
+    tools:context=".AddExerciseActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="Diet Name: "
+        android:text="Activity Name: "
         android:layout_marginLeft="5dp"
         android:textStyle="bold"
-        android:id="@+id/textDietNameLabel"
+        android:id="@+id/textExercisenameLabel"
         android:paddingTop="25dp"/>
 
     <EditText
@@ -24,10 +24,9 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:id="@+id/textDietName"
-        android:layout_toRightOf="@+id/textDietNameLabel"
+        android:id="@+id/textExericeName"
+        android:layout_toRightOf="@+id/textExercisenameLabel"
         android:layout_marginTop="5dp" />
     <Button
         android:layout_width="wrap_content"
@@ -35,16 +34,16 @@
         android:text="Date"
         android:layout_marginTop="5dp"
         android:id="@+id/btnDatePicker"
-        android:layout_below="@+id/textDietNameLabel"/>
+        android:layout_below="@+id/textExercisenameLabel"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textDate"
         android:layout_marginTop="5dp"
         android:hint="YYYY-MM-DD"
-        android:layout_alignParentRight="true"
+        android:ems="10"
         android:layout_toRightOf="@+id/btnDatePicker"
-        android:layout_below="@+id/textDietNameLabel"/>
+        android:layout_below="@+id/textExercisenameLabel"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,7 +58,7 @@
         android:id="@+id/textTime"
         android:hint="HH:MM"
         android:layout_marginTop="5dp"
-        android:layout_alignParentRight="true"
+        android:ems="10"
         android:layout_below="@id/btnDatePicker"
         android:layout_toRightOf="@+id/btnTimePicker"/>
 
@@ -69,8 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:textStyle="bold"
-        android:text="Quantity: "
-        android:id="@+id/textQuantityLabel"
+        android:text="Duration\n(minutes)"
+        android:id="@+id/textDurationLabel"
         android:layout_below="@+id/textTime"
         android:paddingTop="25dp"/>
 
@@ -79,11 +78,10 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:layout_alignLeft="@+id/textDate"
+        android:id="@+id/textDuration"
         android:ems="10"
-        android:id="@+id/textQuantity"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="15dp"
-        android:layout_toRightOf="@+id/textQuantityLabel"
+        android:layout_toRightOf="@+id/textDurationLabel"
         android:layout_below="@+id/textTime"/>
 
     <TextView
@@ -93,7 +91,7 @@
         android:textStyle="bold"
         android:text="Comment:)"
         android:id="@+id/textCommentLable"
-        android:layout_below="@+id/textQuantity"
+        android:layout_below="@+id/textDuration"
         android:paddingTop="25dp"/>
 
     <EditText
@@ -103,26 +101,26 @@
         android:layout_alignLeft="@+id/textDate"
         android:ems="10"
         android:id="@+id/textComment"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/textCommentLable"
-        android:layout_below="@+id/textQuantity"/>
+        android:layout_below="@+id/textDuration"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:id="@+id/AddNutritionButton"
+        android:id="@+id/AddActivityButton"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="88dp"
-        android:layout_below="@+id/textComment"/>
+        android:layout_toRightOf="@+id/textExericeName"
+        android:layout_below="@+id/textExercisenameLabel"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/AddActivityButton"
         android:text="Cancel"
-        android:id="@+id/CancelNutritionButton"
-        android:layout_toRightOf="@+id/AddNutritionButton"
-        android:layout_below="@+id/textComment" />
+        android:id="@+id/CancelActivityButton"
+        android:layout_toRightOf="@+id/textComment"
+        android:layout_below="@+id/textTime" />
 
 </RelativeLayout>

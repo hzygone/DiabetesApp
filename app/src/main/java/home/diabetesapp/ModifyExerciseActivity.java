@@ -15,13 +15,13 @@ import android.widget.TimePicker;
 import java.util.Calendar;
 
 import helper.database.DBHelper;
-import helper.domain.BGL;
+import helper.domain.Exercise;
 
-public class ModifyBGLActivity extends AppCompatActivity implements View.OnClickListener {
+public class ModifyExerciseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText bglDate, bglTime, bglReading, bglComment;
+    private EditText exerciseName, exerciseDate, exerciseTime, exerciseDuration, exerciseComment;
     private Button btnUpdate, btnDelete, btnCancel, btnDatePicker, btnTimePicker;
-    private String id, date, time, bglValue, comment;
+    private String id, name, date, time, duration, comment;
 
     private int _id;
 
@@ -30,17 +30,19 @@ public class ModifyBGLActivity extends AppCompatActivity implements View.OnClick
     private DBHelper dbHelper;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modify_bgl);
-        setTitle("Modify BGL Record");
+        setContentView(R.layout.activity_modify_exercise);
+        setTitle("Modify Exercise Activity Record");
         dbHelper = new DBHelper(this);
 
-        bglDate = (EditText) findViewById(R.id.BGLDate);
-        bglTime = (EditText) findViewById(R.id.BGLTime);
-        bglReading = (EditText) findViewById(R.id.BGLInt);
-        bglComment = (EditText) findViewById(R.id.BGLComment);
+        exerciseName = (EditText) findViewById(R.id.textExerciseName) ;
+        exerciseDate = (EditText) findViewById(R.id.exerciseDate);
+        exerciseTime = (EditText) findViewById(R.id.exerciseTime);
+        exerciseDuration = (EditText) findViewById(R.id.textDuration);
+        exerciseComment = (EditText) findViewById(R.id.exerciseComment);
 
         btnUpdate = (Button) findViewById(R.id.btnUpdate);
         btnDelete = (Button) findViewById(R.id.btnDelete);
@@ -51,15 +53,19 @@ public class ModifyBGLActivity extends AppCompatActivity implements View.OnClick
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+        name = intent.getStringExtra("name");
         date = intent.getStringExtra("date");
         time = intent.getStringExtra("time");
-        bglValue = intent.getStringExtra("bglValue");
+        duration = intent.getStringExtra("duration");
         comment = intent.getStringExtra("comment");
 
-        bglDate.setText(date);
-        bglTime.setText(time);
-        bglReading.setText(bglValue);
-        bglComment.setText(comment);
+        Log.i("INFO", "id= "+ id+ " name= "+ name+ " date= "+ date+ "time= "+ time + "duration= "+ duration+ "comment= "+ comment );
+
+        exerciseName.setText(name);
+        exerciseDate.setText(date);
+        exerciseTime.setText(time);
+        exerciseDuration.setText(duration);
+        exerciseComment.setText(comment);
 
         btnUpdate.setOnClickListener(this);
         btnDelete.setOnClickListener(this);
@@ -74,27 +80,27 @@ public class ModifyBGLActivity extends AppCompatActivity implements View.OnClick
 
         switch (v.getId()) {
             case R.id.btnUpdate:
-                BGL updatedBGL = new BGL();
-//                updatedBGL.setId(_id);
-                updatedBGL.setTimeStamp(bglTime.getText().toString());
-                updatedBGL.setDateStamp(bglDate.getText().toString());
-                updatedBGL.setBgReading(Integer.parseInt(bglReading.getText().toString()));
-                updatedBGL.setComment(bglComment.getText().toString());
-                int i = dbHelper.updateBGLByID(Integer.parseInt(id), updatedBGL);
+                Exercise updatedExercise = new Exercise();
+                updatedExercise.setActivityName(exerciseName.getText().toString());
+                updatedExercise.setTimeStamp(exerciseTime.getText().toString());
+                updatedExercise.setDateStamp(exerciseDate.getText().toString());
+                updatedExercise.setDuration(Integer.parseInt(exerciseDuration.getText().toString().trim()));
+                updatedExercise.setComment(exerciseComment.getText().toString());
+                int i = dbHelper.updateExerciseByID(Integer.parseInt(id.trim()), updatedExercise);
                 Log.i("INFO", "" + i);
-                dbHelper.close();
+                dbHelper.closeDB();
                 finish();
                 break;
 
             case R.id.btnDelete:
                 Log.i("INFO", "id is: " + id);
-                dbHelper.deleteBGLByID(Integer.parseInt(id));
+                dbHelper.deleteExerciseByID(Integer.parseInt(id.trim()));
                 dbHelper.closeDB();
                 finish();
                 break;
 
             case R.id.btnCancel:
-                dbHelper.close();
+                dbHelper.closeDB();
                 finish();  // go to the main activity;
                 break;
 
@@ -110,7 +116,7 @@ public class ModifyBGLActivity extends AppCompatActivity implements View.OnClick
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        bglDate.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
+                        exerciseDate.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
                     }
                 }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -126,7 +132,7 @@ public class ModifyBGLActivity extends AppCompatActivity implements View.OnClick
 
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        bglTime.setText(hourOfDay + ":" + minute);
+                        exerciseTime.setText(hourOfDay + ":" + minute);
                     }
                 }, mHour, mMinute, false);
                 timePickerDialog.show();

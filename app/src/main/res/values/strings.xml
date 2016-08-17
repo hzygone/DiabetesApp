@@ -10,19 +10,16 @@
     <string name="title_activity_regimen">Regimen Activity</string>
     <string name="about">About</string>
     <string name="about_content">This Diabetes Self Management android app is developed as part of the fulfilling the course requirement for the android programming course.</string>
+    <string name="help_content">Diabetes Self Management Android App \n
+
+    Main Activity - Has 5 menu buttons , each of the will open the respective activities.
+        Activity View -
+        Blood Glucose View -
+        Medication View -
+        Nutrition View -
+        Regiment View -
+    </string>
     <string name="help">Help</string>
-    <string-array name="dummy_data">
-        <item>100    9:30 AM 05/22/1994</item>
-        <item>104    9:30 AM 05/22/1994</item>
-        <item>106    9:30 AM 05/22/1994</item>
-        <item>96    9:30 AM 05/22/1994</item>
-        <item>100    9:30 AM 05/22/1994</item>
-        <item>100    9:30 AM 05/22/1994</item>
-        <item>109    9:30 AM 05/22/1994</item>
-        <item>140    9:30 AM 05/22/1994</item>
-        <item>100    9:30 AM 05/22/1994</item>
-        <item>89    9:30 AM 05/22/1994</item>
-    </string-array>
 
 
 </resources>

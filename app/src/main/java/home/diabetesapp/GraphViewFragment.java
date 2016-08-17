@@ -18,7 +18,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.util.ArrayList;
 import java.util.List;
 
-import helper.database.BGLDBHelper;
+import helper.database.DBHelper;
 import helper.domain.BGL;
 
 
@@ -26,10 +26,11 @@ import helper.domain.BGL;
  * A simple {@link Fragment} subclass.
  */
 public class GraphViewFragment extends Fragment {
-    ListView listView;
+    private ListView listView;
     private List<BGL> bglList;
-    BGLDBHelper dbHelper;
-    GraphView bglLineGraph;
+    private DBHelper dbHelper;
+
+    private GraphView bglLineGraph;
 
     EditText textDateFrom, textDateTo;
 
@@ -44,7 +45,7 @@ public class GraphViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         bglList = new ArrayList<BGL>();
-        dbHelper = new BGLDBHelper(this.getActivity());
+        dbHelper = new DBHelper(this.getActivity());
 
         textDateFrom = (EditText) this.getActivity().findViewById(R.id.textDateFrom);
         textDateTo = (EditText) this.getActivity().findViewById(R.id.textDateTo);
@@ -115,6 +116,7 @@ public class GraphViewFragment extends Fragment {
         bglLineGraph.getViewport().setMaxY(300);
 
         bglLineGraph.getViewport().setScrollable(true);
+        dbHelper.closeDB();
     }
 
 }

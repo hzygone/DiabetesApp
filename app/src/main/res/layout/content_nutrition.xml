@@ -9,22 +9,69 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="home.diabetesapp.NutritionActivity"
+    tools:context=".BGLActivity"
     tools:showIn="@layout/activity_nutrition">
 
-
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:id="@+id/NutritionChart"
-        />
-
-    <ListView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/NutritionList"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/NutritionChart"
-        android:entries="@array/dummy_data"/>
+        android:background="@color/colorMaster"
+        android:id="@+id/menuBarLayout"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From: "
+            android:id="@+id/btnDatePickerFrom"
+            android:onClick="onClick"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/textDateFrom"
+            android:hint="YYYY-MM-DD"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/btnDatePickerFrom" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To:"
+            android:layout_alignRight="@+id/btnDatePickerFrom"
+            android:layout_alignLeft="@+id/btnDatePickerFrom"
+            android:layout_below="@+id/btnDatePickerFrom"
+            android:id="@+id/btnDatePickerTo"
+            android:onClick="onClick"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/textDateTo"
+            android:hint="YYYY-MM-DD"
+            android:layout_below="@id/textDateFrom"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/btnDatePickerTo" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List View"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/btnListView"
+            android:layout_below="@+id/btnDatePickerTo"
+            android:onClick="onClick"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/menuBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/fragmentContainer"
+        android:orientation="horizontal">
+
+    </LinearLayout>
 
 </RelativeLayout>

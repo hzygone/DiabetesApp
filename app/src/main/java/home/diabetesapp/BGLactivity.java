@@ -15,32 +15,25 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-
-import helper.database.BGLDBHelper;
-import helper.domain.BGL;
 
 public class BGLActivity extends AppCompatActivity {
-    ListView listView;
-    private List<BGL> bglList;
-    BGLDBHelper dbHelper;
-    public String msg;
+    private String msg;
     private String m_Text = "";
 
-    Button btnWeeklyActivity, btnMonthlyActivity, btnGraphView, btnDateFrom, btnDateTo;
-    EditText textDateFrom, textDateTo;
+    private Button btnListView, btnGraphView, btnDateFrom, btnDateTo;
+    private EditText textDateFrom, textDateTo;
 
     private int mYear, mMonth, mDay, mHour, mMinute;
 
-
+    private ScaleGestureDetector mScaleDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,30 +46,42 @@ public class BGLActivity extends AppCompatActivity {
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 237, 84, 84)));
         }
         setSupportActionBar(toolbar);
+        mScaleDetector = new ScaleGestureDetector(getApplicationContext(), new ScaleGestureDetector.OnScaleGestureListener() {
+            @Override
+            public void onScaleEnd(ScaleGestureDetector detector) {
+            }
 
-        btnWeeklyActivity = (Button) findViewById(R.id.btnweeklyActivity);
-        btnMonthlyActivity = (Button) findViewById(R.id.btnListView);
+            @Override
+            public boolean onScaleBegin(ScaleGestureDetector detector) {
+                return true;
+            }
+
+            @Override
+            public boolean onScale(ScaleGestureDetector detector) {
+                Log.d("INFO", "zoom ongoing, scale: " + detector.getScaleFactor());
+                return false;
+            }
+        });
+
+        btnListView = (Button) findViewById(R.id.btnListView);
         btnGraphView = (Button) findViewById(R.id.btnGraphView);
+
+        btnDateFrom = (Button) findViewById(R.id.btnDatePickerFrom);
+        btnDateTo = (Button) findViewById(R.id.btnDatePickerTo);
 
         textDateFrom = (EditText) findViewById(R.id.textDateFrom);
         textDateTo = (EditText) findViewById(R.id.textDateTo);
 
-        btnDateFrom = (Button) findViewById(R.id.btnDatePickerFrom);
-        btnDateTo =(Button) findViewById(R.id.btnDatePickerTo);
+    }
 
-        dbHelper = new BGLDBHelper(this);
-        bglList = new ArrayList<BGL>();
-        // Todo - need to implement custom alarm(notification) handler
-        //  setAlarm();
-        //  showNotification();
-
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mScaleDetector.onTouchEvent(event);
+        return true;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        menu.add(0, 0, 0, "Quit").setIcon(R.drawable.plus_white);
-
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_bglactivity, menu);
         return true;
     }
@@ -86,7 +91,7 @@ public class BGLActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_add_bgldata) {
-            Intent i = new Intent(BGLActivity.this, AddBGLactivity.class);
+            Intent i = new Intent(BGLActivity.this, AddBGLActivity.class);
             startActivity(i);
         }
 
@@ -97,7 +102,7 @@ public class BGLActivity extends AppCompatActivity {
         FragmentManager fm = getFragmentManager();
 
 
-        if (view == btnWeeklyActivity) {
+        if (view == btnListView) {
             android.app.FragmentTransaction ft = fm.beginTransaction();
             BGListViewFragment bglFragment = new BGListViewFragment();
             ft.replace(R.id.fragmentContainer, bglFragment);
@@ -109,16 +114,7 @@ public class BGLActivity extends AppCompatActivity {
             ft.replace(R.id.fragmentContainer, bglFragment);
             ft.commit();
 
-        } else if (view == btnMonthlyActivity) {
-
-            //Todo need to populate monthly bgl readings
-            android.app.FragmentTransaction ft = fm.beginTransaction();
-            BGListViewFragment bglFragment = new BGListViewFragment();
-            ft.replace(R.id.fragmentContainer, bglFragment);
-            ft.commit();
-
-        }
-        else if(view == btnDateFrom){
+        } else if (view == btnDateFrom) {
             final Calendar calender = Calendar.getInstance();
             mYear = calender.get(Calendar.YEAR);
             mMonth = calender.get(Calendar.MONTH);
@@ -135,9 +131,7 @@ public class BGLActivity extends AppCompatActivity {
             }, mYear, mMonth, mDay);
             datePickerDialog.show();
 
-        }
-
-        else if(view == btnDateTo){
+        } else if (view == btnDateTo) {
             final Calendar calender = Calendar.getInstance();
             mYear = calender.get(Calendar.YEAR);
             mMonth = calender.get(Calendar.MONTH);
@@ -154,8 +148,7 @@ public class BGLActivity extends AppCompatActivity {
             }, mYear, mMonth, mDay);
             datePickerDialog.show();
 
-        }
-        else {
+        } else {
             //
         }
     }

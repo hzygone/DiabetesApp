@@ -30,7 +30,7 @@
         android:layout_toEndOf="@+id/ActivityButton"
         android:backgroundTint="#ED5454"
         android:textColor="#FFFFFF"
-        />
+        android:layout_toRightOf="@+id/ActivityButton" />
 
     <Button
         android:layout_width="180dp"
@@ -51,7 +51,7 @@
         android:layout_toEndOf="@+id/MedicationButton"
         android:backgroundTint="#69BA6D"
         android:textColor="#FFFFFF"
-        />
+        android:layout_toRightOf="@+id/MedicationButton" />
 
     <Button
         android:layout_width="180dp"

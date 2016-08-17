@@ -1,5 +1,7 @@
 package home.diabetesapp;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -7,7 +9,7 @@ import android.util.Log;
 
 public class MedicationActivity extends AppCompatActivity {
 
-    String msg;
+    private String msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +18,8 @@ public class MedicationActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
+            toolbar.setBackground(new ColorDrawable(Color.argb(255, 53, 183, 243)));
+
             setSupportActionBar(toolbar);
         }
     }

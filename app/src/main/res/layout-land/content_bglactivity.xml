@@ -15,7 +15,7 @@
 <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/activityColorMaster"
+        android:background="@color/colorMaster"
         android:id="@+id/menuBarLayout"
         android:layout_marginLeft="0dp"
         >
@@ -77,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/menuBarLayout"
-        android:background="@color/colorFragmentDetail"
+        android:background="@color/colorDetail"
         android:id="@+id/fragmentContainer"
         android:orientation="vertical">
     </FrameLayout>

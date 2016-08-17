@@ -14,25 +14,26 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-import helper.database.BGLDBHelper;
+import helper.database.DBHelper;
 import helper.domain.BGL;
 
-public class AddBGLactivity extends AppCompatActivity implements View.OnClickListener {
+public class AddBGLActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public Button cancel, add, btnTimePicker, btnDatePicker;
-    public EditText textDate, textTime, textDuration, textComment;
+    private Button cancel, add, btnTimePicker, btnDatePicker;
+    private EditText textDate, textTime, textDuration, textComment;
 
     private int mYear, mMonth, mDay, mHour, mMinute;
 
-    public BGLDBHelper dbHelper;
-    public String msg;
+    private DBHelper dbHelper;
+
+    private String msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bglactivity);
         setTitle("Add BGL Reading");
-        dbHelper = new BGLDBHelper(this);
+        dbHelper = new DBHelper(this);
 
         textDate = (EditText) findViewById(R.id.BGLDate);
         textTime = (EditText) findViewById(R.id.BGLTime);
@@ -79,6 +80,7 @@ public class AddBGLactivity extends AppCompatActivity implements View.OnClickLis
                         BGL bglInput = new BGL(0, textTime.getText().toString(), textDate.getText().toString(), Integer.parseInt(textDuration.getText().toString()), textComment.getText().toString());
 
                         dbHelper.addBGL(bglInput);
+                        dbHelper.closeDB();
                         finish();
 
                     } else {

@@ -1,5 +1,7 @@
 package home.diabetesapp;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +26,8 @@ public class RegimenActivity extends AppCompatActivity {
 
         btnStartReminder = (Button) findViewById(R.id.btnStartReminder);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackground(new ColorDrawable(Color.argb(255, 120, 144, 156)));
+
         if (toolbar != null) {
             toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
             setSupportActionBar(toolbar);

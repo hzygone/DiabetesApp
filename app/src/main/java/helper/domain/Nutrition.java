@@ -4,16 +4,32 @@ package helper.domain;
  * Created by owner on 7/31/16.
  */
 public class Nutrition {
+    private int id;
     private String nameOfDiet;
-    private int size;
+    private String dateStamp;
+    private String timestamp;
+    private int quantity;
     private String comment;
 
     public Nutrition() {
     }
 
-    public Nutrition(String nameOfDiet, int size, String comment) {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Nutrition(int id, String nameOfDiet, String dateStamp, String timestamp, int quantity, String comment) {
+        this.id = id;
+
         this.nameOfDiet = nameOfDiet;
-        this.size = size;
+        this.dateStamp = dateStamp;
+        this.timestamp = timestamp;
+        this.quantity = quantity;
         this.comment = comment;
     }
 
@@ -25,12 +41,12 @@ public class Nutrition {
         this.nameOfDiet = nameOfDiet;
     }
 
-    public int getSize() {
-        return size;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getComment() {
@@ -41,12 +57,33 @@ public class Nutrition {
         this.comment = comment;
     }
 
+
+    public String getDateStamp() {
+        return dateStamp;
+    }
+
+    public void setDateStamp(String dateStamp) {
+        this.dateStamp = dateStamp;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+
     @Override
     public String toString() {
-        return "Nutrition{" +
-                "nameOfDiet='" + nameOfDiet + '\'' +
-                ", size=" + size +
-                ", comment='" + comment + '\'' +
+        return  "ID="+ + id+
+                "NameOfDiet=" + nameOfDiet+
+                ", dateStamp='" + dateStamp  +
+                ", timestamp='" + timestamp  +
+                ", quantity=" + quantity +
+                ", comment='" + comment  +
                 '}';
     }
+
 }

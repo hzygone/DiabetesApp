@@ -11,24 +11,41 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".AddBGLActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textExerciseNameLabel"
+        android:layout_alignParentTop="true"
+        android:text="Activity Name: "
+        android:paddingTop="25dp"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textExerciseName"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/btnDatePicker"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_toRightOf="@+id/textExerciseNameLabel"/>
     <Button
         android:id="@+id/btnDatePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:paddingTop="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textExerciseNameLabel"
         android:text="DATE: " />
 
     <EditText
-        android:id="@+id/BGLDate"
+        android:id="@+id/exerciseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/btnDatePicker"
         android:layout_toRightOf="@+id/btnDatePicker"
+        android:layout_below="@+id/textExerciseNameLabel"
         android:ems="10"
         android:inputType="date" />
 
@@ -39,16 +56,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@id/btnDatePicker"
-        android:paddingTop="25dp"
         android:text="TIME: " />
 
     <EditText
-        android:id="@+id/BGLTime"
+        android:id="@+id/exerciseTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/BGLDate"
+        android:layout_below="@id/exerciseDate"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@id/btnTimePicker"
         android:layout_toRightOf="@id/btnTimePicker"
@@ -56,25 +70,25 @@
         android:inputType="time" />
 
     <TextView
-        android:id="@+id/GlucoseUnits"
+        android:id="@+id/durationLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/BGLTime"
+        android:layout_below="@+id/exerciseTime"
         android:paddingTop="25dp"
-        android:text="mg/dL: " />
+        android:textStyle="bold"
+        android:text="Duration \n (minutes): " />
 
     <EditText
-        android:id="@+id/BGLInt"
+        android:id="@+id/textDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/BGLTime"
+        android:layout_below="@+id/exerciseTime"
         android:layout_marginTop="15dp"
-        android:layout_toEndOf="@+id/GlucoseUnits"
-        android:layout_toRightOf="@+id/GlucoseUnits"
+        android:layout_alignLeft="@+id/exerciseTime"
+        android:layout_toEndOf="@+id/durationLabel"
+        android:layout_toRightOf="@+id/durationLabel"
         android:ems="10"
         android:inputType="number" />
 
@@ -85,24 +99,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/BGLInt"
-        android:layout_toEndOf="@+id/BGLInt"
-        android:layout_toRightOf="@+id/BGLInt"
+        android:layout_below="@+id/textDuration"
+        android:layout_toEndOf="@+id/textDuration"
+        android:layout_toRightOf="@+id/textDuration"
         android:paddingTop="25dp"
+        android:textStyle="bold"
         android:text="Comment: " />
 
     <EditText
-        android:id="@+id/BGLComment"
+        android:id="@+id/exerciseComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/CancelAddDataButton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignRight="@+id/CancelAddDataButton"
-        android:layout_below="@+id/BGLInt"
+        android:layout_below="@+id/textDuration"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/commentLabel"
         android:layout_toRightOf="@+id/commentLabel"
+        android:layout_alignLeft="@+id/exerciseTime"
         android:ems="10"
         android:inputType="text" />
 
@@ -111,8 +123,9 @@
         android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/BGLComment"
-        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/textExercisenameLabel"
+        android:layout_toRightOf="@+id/textExerciseName"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
         android:text="UPDATE" />
 
@@ -120,21 +133,21 @@
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/BGLComment"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/btnUpdate"
+        android:layout_below="@+id/exerciseDate"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/exerciseTime"
         android:text="DELETE" />
 
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/BGLComment"
-        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/exerciseTime"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/btnDelete"
-        android:layout_toRightOf="@+id/btnDelete"
+        android:layout_toEndOf="@+id/exerciseComment"
+        android:layout_toRightOf="@+id/exerciseComment"
         android:text="CANCEL" />
 
 

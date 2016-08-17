@@ -108,11 +108,11 @@ public class GraphViewFragment extends Fragment {
 
         bglLineGraph.getViewport().setXAxisBoundsManual(true);
         bglLineGraph.getViewport().setMinX(1);
-        bglLineGraph.getViewport().setMaxX(90);
+        bglLineGraph.getViewport().setMaxX(31);
 
         // set manual Y bounds
         bglLineGraph.getViewport().setYAxisBoundsManual(true);
-        bglLineGraph.getViewport().setMinY(10);
+        bglLineGraph.getViewport().setMinY(50);
         bglLineGraph.getViewport().setMaxY(300);
 
         bglLineGraph.getViewport().setScrollable(true);

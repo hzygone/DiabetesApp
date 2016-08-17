@@ -16,7 +16,6 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,21 +24,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BGLActivity"
+            android:name=".BGLactivity"
             android:label="@string/title_activity_bglactivity"
             android:parentActivityName=".MainActivity"
-            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="home.diabetesapp.MainActivity" />
         </activity>
         <activity android:name=".AddBGLActivity"
-            android:configChanges="orientation|screenSize"/>
+            />
         <activity
             android:name=".NutritionActivity"
             android:label="@string/title_activity_nutrition"
-            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddNutritionActivity" />
         <activity android:name=".AddExerciseActivity" />
@@ -47,11 +44,10 @@
             android:name=".ExerciseActivty"
             android:label="@string/title_activity_activity_activty"
             android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|screenSize"/>
+            />
         <activity
             android:name=".MedicationActivity"
             android:label="@string/title_activity_medication_avtivity"
-            android:configChanges="orientation|screenSize"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -61,7 +57,6 @@
         <activity
             android:name=".RegimenActivity"
             android:label="@string/title_activity_regimen"
-            android:configChanges="orientation|screenSize"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -69,9 +64,9 @@
                 android:value="home.diabetesapp.MainActivity" />
         </activity>
         <activity android:name=".AboutActivity"
-            android:configChanges="orientation|screenSize"/>
+            />
         <activity android:name=".HelpActivity"
-            android:configChanges="orientation|screenSize"/>
+            />
 
         <receiver android:name="helper.util.RegimenAlarmReceiver" />
         <receiver
@@ -85,9 +80,9 @@
         <service android:name="helper.util.RegimenReminderService" />
 
         <activity android:name=".ModifyBGLActivity"
-            android:configChanges="orientation|screenSize"/>
+            />
         <activity android:name=".ModifyExerciseActivity"
-            android:configChanges="orientation|screenSize"/>
+            />
         <activity android:name=".StatisticsActivity"></activity>
     </application>
 

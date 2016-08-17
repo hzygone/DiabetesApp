@@ -16,81 +16,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Your Regimen for Today"
+        android:text="Please Create Your Regimen Reminder:"
         android:id="@+id/textView4"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Diet Name:"
-        android:id="@+id/textView5"
+        android:text="What hour of the day would you like your alarm?  Please use 24 HR clock"
+        android:id="@+id/textView8"
         android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="63dp"
-        android:layout_alignParentLeft="true" />
+        android:layout_marginTop="51dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/DietEditRegimen"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medication Schedule: "
-        android:id="@+id/textView6"
-        android:layout_below="@+id/DietEditRegimen"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/MedicationEditRegimen"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Exercise Date: "
-        android:id="@+id/textView7"
-        android:layout_below="@+id/MedicationEditRegimen"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ExerciseEditRegimen"
-        android:layout_below="@+id/textView7"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
     <Button
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Create Reminder"
         android:id="@+id/btnStartReminder"
-        android:text="Start Reminder"
-        android:layout_below="@+id/ExerciseEditRegimen"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:onClick="startReminder"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnStartReminder"
-        android:text="Starting the  reminder will set the alarm to notify you when to act to one of the listed regimens.\n It will automatically take the events time from the regimen  lists  "/>
+        android:layout_marginBottom="160dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

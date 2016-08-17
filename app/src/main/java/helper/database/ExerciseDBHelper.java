@@ -26,7 +26,7 @@ public class ExerciseDBHelper extends SQLiteOpenHelper {
     private static final String KEY_TIME_STAMP = "timeStamp";  //can be entered manually
     private static final String KEY_DURATION = "duration";   // activity duration in minutes
     private static final String KEY_COMMENT = "comment";     // notes about the activity
-
+///commit
 
     public ExerciseDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

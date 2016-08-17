@@ -13,9 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 
 import java.util.Calendar;
 
@@ -30,11 +28,7 @@ public class RegimenActivity extends AppCompatActivity {
     private PendingIntent pendingIntent;
 
     Button btnStartReminder;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,27 +87,8 @@ public class RegimenActivity extends AppCompatActivity {
     /**
      * Called when the activity is about to become visible.
      */
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Log.d(msg, "The onStart() event");
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Regimen Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://home.diabetesapp/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
+
+
 
     /**
      * Called when the activity has become visible.
@@ -136,27 +111,7 @@ public class RegimenActivity extends AppCompatActivity {
     /**
      * Called when the activity is no longer visible.
      */
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Regimen Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://home.diabetesapp/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        Log.d(msg, "The onStop() event");
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.disconnect();
-    }
+
 
     /**
      * Called just before the activity is destroyed.

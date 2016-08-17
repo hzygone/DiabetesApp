@@ -17,7 +17,7 @@ import java.util.Calendar;
 import helper.database.DBHelper;
 import helper.domain.BGL;
 
-public class AddBGLActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddBGLactivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button cancel, add, btnTimePicker, btnDatePicker;
     private EditText textDate, textTime, textDuration, textComment;

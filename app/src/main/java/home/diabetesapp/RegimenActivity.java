@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 
@@ -24,11 +25,14 @@ public class RegimenActivity extends AppCompatActivity {
     RegimenAlarmReceiver alarm = new RegimenAlarmReceiver();
 
     String msg;
+    String alarmtype;
 
     private PendingIntent pendingIntent;
 
     Button btnStartReminder;
-
+    CheckBox BGLbox;
+    CheckBox Exercisebox;
+    CheckBox dietbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,9 @@ public class RegimenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_regimen);
 
         btnStartReminder = (Button) findViewById(R.id.btnStartReminder);
+        BGLbox = (CheckBox) findViewById(R.id.BGLbox);
+        Exercisebox = (CheckBox) findViewById(R.id.exercisebox);
+        dietbox = (CheckBox) findViewById(R.id.dietbox);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
@@ -59,8 +66,14 @@ public class RegimenActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         int interval = 8000;
 
+
         manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
-        Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show();
+        if(BGLbox.isChecked())
+        {alarmtype = "BGL Alarm Set";}
+        else if(dietbox.isChecked())
+        {alarmtype = "Diet Alarm Set;";} else
+        {alarmtype = "Exercise Alarm Set";}
+        Toast.makeText(this, alarmtype, Toast.LENGTH_SHORT).show();
     }
 
     public void cancel() {

@@ -52,4 +52,31 @@
         android:layout_marginBottom="160dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diet"
+        android:id="@+id/dietbox"
+        android:layout_alignTop="@+id/exercisebox"
+        android:layout_toRightOf="@+id/btnStartReminder"
+        android:layout_toEndOf="@+id/btnStartReminder" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercise"
+        android:id="@+id/exercisebox"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/btnStartReminder"
+        android:layout_toStartOf="@+id/btnStartReminder" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BGL"
+        android:id="@+id/BGLbox"
+        android:layout_alignTop="@+id/dietbox"
+        android:layout_alignRight="@+id/editText2"
+        android:layout_alignEnd="@+id/editText2" />
 </RelativeLayout>

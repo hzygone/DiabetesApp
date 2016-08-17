@@ -1,13 +1,21 @@
 package home.diabetesapp;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+
+
+import java.util.Calendar;
 
 import helper.util.RegimenAlarmReceiver;
 
@@ -17,7 +25,10 @@ public class RegimenActivity extends AppCompatActivity {
 
     String msg;
 
+    private PendingIntent pendingIntent;
+
     Button btnStartReminder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +37,58 @@ public class RegimenActivity extends AppCompatActivity {
 
         btnStartReminder = (Button) findViewById(R.id.btnStartReminder);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackground(new ColorDrawable(Color.argb(255, 120, 144, 156)));
-
         if (toolbar != null) {
             toolbar.setLogo(R.mipmap.ic_launcher);   //uses the ic_launcher icon as title log
             setSupportActionBar(toolbar);
         }
+
+        /* Retrieve a PendingIntent that will perform a broadcast */
+        Intent alarmIntent = new Intent(RegimenActivity.this, AlarmReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(RegimenActivity.this, 0, alarmIntent, 0);
+
+        findViewById(R.id.btnStartReminder).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start();
+            }
+        });
+
+    }
+
+    public void start() {
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        int interval = 8000;
+
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
+        Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show();
+    }
+
+    public void cancel() {
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        manager.cancel(pendingIntent);
+        Toast.makeText(this, "Alarm Canceled", Toast.LENGTH_SHORT).show();
+    }
+
+    public void startAt10() {
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        int interval = 1000 * 60 * 20;
+
+        /* Set the alarm to start at 10:30 AM */
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 10);
+        calendar.set(Calendar.MINUTE, 30);
+
+        /* Repeating on every 20 minutes interval */
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                1000 * 60 * 20, pendingIntent);
     }
 
     /**
      * Called when the activity is about to become visible.
      */
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(msg, "The onStart() event");
-    }
+
+
 
     /**
      * Called when the activity has become visible.
@@ -64,11 +111,7 @@ public class RegimenActivity extends AppCompatActivity {
     /**
      * Called when the activity is no longer visible.
      */
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(msg, "The onStop() event");
-    }
+
 
     /**
      * Called just before the activity is destroyed.
@@ -88,5 +131,6 @@ public class RegimenActivity extends AppCompatActivity {
         alarm.cancelAlarm(this);
 
     }
+
 
 }

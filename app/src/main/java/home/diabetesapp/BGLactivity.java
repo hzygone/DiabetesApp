@@ -24,7 +24,7 @@ import android.widget.EditText;
 
 import java.util.Calendar;
 
-public class BGLactivity extends AppCompatActivity {
+public class BGLActivity extends AppCompatActivity {
     private String msg;
     private String m_Text = "";
 
@@ -91,7 +91,7 @@ public class BGLactivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_add_bgldata) {
-            Intent i = new Intent(BGLactivity.this, AddBGLActivity.class);
+            Intent i = new Intent(BGLActivity.this, AddBGLactivity.class);
             startActivity(i);
         }
 

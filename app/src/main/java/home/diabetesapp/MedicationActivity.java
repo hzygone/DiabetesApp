@@ -1,15 +1,24 @@
 package home.diabetesapp;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import helper.domain.BGL;
 
 public class MedicationActivity extends AppCompatActivity {
 
     private String msg;
+
+    Button addMedButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +30,50 @@ public class MedicationActivity extends AppCompatActivity {
             toolbar.setBackground(new ColorDrawable(Color.argb(255, 53, 183, 243)));
 
             setSupportActionBar(toolbar);
+        }
+
+        addMedButton = (Button) findViewById(R.id.MedSubmitButton);
+        addMedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("INFO", "Adding BGL reading...");
+
+                try {
+                    new AlertDialog.Builder(MedicationActivity.this)
+                            .setTitle("Added Entry")
+                            .setMessage("You have added an entry")
+                            .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_info)
+                            .show();
+
+                } catch (Exception ex) {
+
+                }
+            }
+        });
+    }
+
+    public void onClick(View v){
+        if(v == addMedButton){
+            new AlertDialog.Builder(MedicationActivity.this)
+                    .setTitle("Added meds")
+                    .setMessage("You have added your meds!")
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // continue with delete
+                        }
+                    })
+                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
         }
     }
 

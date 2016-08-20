@@ -83,6 +83,7 @@
             />
         <activity android:name=".ModifyExerciseActivity"
             />
+        <activity android:name=".ModifyNutritionActivity"/>
         <activity android:name=".StatisticsActivity"></activity>
     </application>
 

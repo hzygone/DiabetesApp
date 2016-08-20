@@ -93,12 +93,16 @@ public class NutritionListViewFragment extends Fragment {
                     dateString = itemString[2].split("=")[1];
                     timeString = itemString[3].split("=")[1];
                     quantityString = itemString[4].split("=")[1];
-                    if (itemString[5].split("=").length > 1) {
-                        commentString = itemString[5].split("=")[1];
+                        if (itemString[5].split("=").length > 1) {
+                            commentString = itemString[5].split("=")[1];
+
+                    }
+                    else{
+                        commentString = "";
                     }
                 }
 
-                Intent modifyIntent = new Intent(view.getContext(), ModifyExerciseActivity.class);
+                Intent modifyIntent = new Intent(view.getContext(), ModifyNutritionActivity.class);
                 Log.i("INFO", idString + " " + nameString + " " + dateString + " " + timeString + " " + quantityString + " " + commentString);
                 modifyIntent.putExtra("id", idString);
                 modifyIntent.putExtra("name", nameString);
@@ -107,6 +111,8 @@ public class NutritionListViewFragment extends Fragment {
                 modifyIntent.putExtra("quantity", quantityString);
                 modifyIntent.putExtra("comment", commentString);
                 dbHelper.closeDB();
+                Log.i("INFO", "id="+idString+ " name="+ nameString+ " date="+ dateString+" time="+
+                        timeString+ " quantity="+ quantityString+ " comment="+ commentString );
                 startActivity(modifyIntent);
             }
         });

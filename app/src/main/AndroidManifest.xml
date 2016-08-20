@@ -32,7 +32,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="home.diabetesapp.MainActivity" />
         </activity>
-        <activity android:name=".AddBGLActivity"
+        <activity android:name=".AddBGLactivity"
             />
         <activity
             android:name=".NutritionActivity"
@@ -83,6 +83,7 @@
             />
         <activity android:name=".ModifyExerciseActivity"
             />
+        <activity android:name=".ModifyNutritionActivity"/>
         <activity android:name=".StatisticsActivity"></activity>
     </application>
 

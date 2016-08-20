@@ -55,6 +55,8 @@ public class ExerciseListViewFragment extends Fragment {
         showCustomListView();
     }
 
+
+
     public void showCustomListView() {
         listView = (ListView) getView().findViewById(R.id.bglListView);
         Log.i("INFO", "TextDateFrom is : " + textDateFrom.getText() + ", TextDateTo is: " + textDateTo.getText());

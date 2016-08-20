@@ -77,13 +77,13 @@ public class Nutrition {
 
     @Override
     public String toString() {
-        return  "ID="+ + id+
-                "NameOfDiet=" + nameOfDiet+
-                ", dateStamp='" + dateStamp  +
-                ", timestamp='" + timestamp  +
-                ", quantity=" + quantity +
-                ", comment='" + comment  +
-                '}';
+        return  "ID="+ id+
+                ", Name=" + nameOfDiet+
+                ", Date=" + dateStamp  +
+                ", Time=" + timestamp  +
+                ", Quantity=" + quantity +
+                ", Comment=" + comment;
+
     }
 
 }

@@ -11,15 +11,18 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="home.diabetesapp.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:background="#FFFFFF">
+    android:background="#3e5383">
 
     <Button
         android:layout_width="180dp"
         android:layout_height="130dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
         android:text="Activity"
+        android:textStyle="bold"
         android:id="@+id/ActivityButton"
-        android:backgroundTint="#FFA726"
-        android:textColor="#FFFFFF"
+        android:background="@drawable/exercise_icon"
+        android:textColor="#07c3e9"
         />
 
     <Button
@@ -27,19 +30,24 @@
         android:layout_height="130dp"
         android:text="Blood Glucose"
         android:id="@+id/BGLbutton"
+        android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/ActivityButton"
-        android:backgroundTint="@color/colorBGL"
-        android:textColor="#FFFFFF"
+        android:background="@drawable/bglevel_icon"
+        android:textColor="#ea0707"
+        android:textStyle="bold"
         android:layout_toRightOf="@+id/ActivityButton" />
 
     <Button
         android:layout_width="180dp"
         android:layout_height="130dp"
         android:text="Medication"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/MedicationButton"
         android:layout_below="@+id/ActivityButton"
-        android:backgroundTint="@color/colorMedication"
-        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="@drawable/medication_icon"
+        android:textColor="#0d1df9"
         />
 
     <Button
@@ -48,19 +56,23 @@
         android:text="Nutrition"
         android:id="@+id/NutritionButton"
         android:layout_below="@+id/BGLbutton"
+        android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/MedicationButton"
-        android:backgroundTint="@color/colorNutrition"
-        android:textColor="#FFFFFF"
+        android:background="@drawable/nutrition_icon"
+        android:textColor="#c4ce09"
+        android:textStyle="bold"
         android:layout_toRightOf="@+id/MedicationButton" />
 
     <Button
         android:layout_width="360dp"
         android:layout_height="100dp"
         android:text="Regimen"
+        android:layout_marginTop="15dp"
         android:id="@+id/RegimenButton"
         android:layout_below="@+id/MedicationButton"
-        android:backgroundTint="@color/colorRegimen"
-        android:textColor="#FFFFFF"
+        android:background="@drawable/regimen_icon"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
         />
 
 </RelativeLayout>

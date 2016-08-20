@@ -10,9 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import helper.domain.BGL;
 
 public class MedicationActivity extends AppCompatActivity {
 
@@ -49,6 +46,7 @@ public class MedicationActivity extends AppCompatActivity {
                             })
                             .setIcon(android.R.drawable.ic_dialog_info)
                             .show();
+                    //TextView txt = (TextView) findViewById(R.id.MedicationEditRegimen)
 
                 } catch (Exception ex) {
 
